@@ -1,7 +1,7 @@
 {
-    "name": "gethired-base",
+    "name": "gethired-automation-cms-front-end",
     "version": "1.0.2",
-    "main": "index.js",
+    "main": "index.jsx",
     "license": "MIT",
     "scripts": {
         "start": "webpack server --mode development",
@@ -10,7 +10,9 @@
         "lint": "eslint ./src/**/*.js[x] && prettier --check \"src/**/*.(jsx|js)\"",
         "lint:fix": "eslint ./src/**/*.js[x] --fix && prettier -w \"src/**/*.(jsx|js)\"",
         "prepare": "husky install && git config commit.template .github/GIT_COMMIT_TEMPLATE",
-        "precommit": "lint-staged"
+        "precommit": "lint-staged",
+        "test": "jest",
+        "test:watch": "jest --watch"
     },
     "resolutions": {
         "@mui/utils": "5.2.2",
@@ -41,6 +43,8 @@
         "@babel/preset-react": "7.16.0",
         "@commitlint/cli": "15.0.0",
         "@commitlint/config-conventional": "15.0.0",
+        "@testing-library/jest-dom": "^5.16.1",
+        "@testing-library/react": "^12.1.2",
         "babel-eslint": "10.1.0",
         "babel-loader": "8.2.3",
         "clean-webpack-plugin": "4.0.0",
@@ -57,6 +61,7 @@
         "html-loader": "3.0.1",
         "html-webpack-plugin": "5.5.0",
         "husky": ">=6",
+        "jest": "^27.4.3",
         "lint-staged": ">=10",
         "mini-css-extract-plugin": "2.4.5",
         "node-sass": "6.0.1",
