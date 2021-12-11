@@ -9,34 +9,82 @@ import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import PhoneAndroidOutlinedIcon from '@mui/icons-material/PhoneAndroidOutlined';
 import DesktopMacOutlinedIcon from '@mui/icons-material/DesktopMacOutlined';
+import { styled } from '@mui/material/styles';
+
+const ListNavBarWM = styled(List)`
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+`;
+
+const ListItemIconNavBarWM = styled(ListItemIcon)`
+    color: #373f41;
+`;
 
 const NavbarWebMaker = () => {
     return (
-        <List>
-            <ListItem>
-                <ListItemIcon>
+        <ListNavBarWM>
+            <ListItem
+                sx={{
+                    paddingRight: '0px',
+                }}
+            >
+                <ListItemIconNavBarWM>
                     <ArrowBackOutlinedIcon />
-                </ListItemIcon>
-                <ListItemIcon>
+                </ListItemIconNavBarWM>
+                <ListItemIconNavBarWM>
                     <ArrowForwardOutlinedIcon />
-                </ListItemIcon>
+                </ListItemIconNavBarWM>
             </ListItem>
-            <ListItem>
-                <ListItemIcon>
+            <ListItem
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    paddingBottom: '0px',
+                    paddingLeft: '0px',
+                }}
+            >
+                <ListItemIconNavBarWM
+                    sx={{
+                        placeContent: 'center',
+                    }}
+                >
                     <PhoneAndroidOutlinedIcon />
                     <DesktopMacOutlinedIcon />
-                </ListItemIcon>
-                <ListItemText primary="Preview" />
+                </ListItemIconNavBarWM>
+                <ListItemText
+                    sx={{
+                        color: '#373f41',
+                    }}
+                    primary="Preview"
+                />
             </ListItem>
             <ListItem>
-                <ListItemButton>
+                <ListItemButton
+                    sx={{
+                        backgroundColor: '#555bff',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '0.3rem 0.5rem',
+                        borderRadius: '0.5rem',
+                        transition: '0.3s',
+
+                        '&:hover': {
+                            backgroundColor: '#373f41',
+                        },
+                    }}
+                >
                     <ListItemText primary="Publicar" />
-                    <ListItemIcon>
-                        <WebOutlinedIcon />
-                    </ListItemIcon>
+                    <WebOutlinedIcon
+                        sx={{
+                            marginLeft: '0.2rem',
+                            fontSize: '2.1rem',
+                        }}
+                    />
                 </ListItemButton>
             </ListItem>
-        </List>
+        </ListNavBarWM>
     );
 };
 
