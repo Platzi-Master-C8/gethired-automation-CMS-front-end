@@ -9,47 +9,83 @@ import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
 import WebOutlinedIcon from '@mui/icons-material/WebOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
+import { styled } from '@mui/material/styles';
+
+const ListNavBar = styled(List)`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 0;
+    margin-right: 20px;
+`;
+
+const ListItemNavBar = styled(ListItem)`
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+    padding-top: 0;
+    transition: 0.3s;
+    border-bottom: 3px solid transparent;
+
+    :hover {
+        border-bottom: 3px solid #555bff;
+        transition: 0.3s;
+    }
+`;
+
+const ListItemIconNavBar = styled(ListItemIcon)`
+    place-content: center;
+    color: #373f41;
+    font-size: 20px;
+`;
+
+const ListItemTextNavBar = styled(ListItemText)`
+    text-align: center;
+    white-space: nowrap;
+    color: #373f41;
+    font-size: 14px;
+`;
 
 const Navbar = () => {
     return (
-        <List>
-            <ListItem component="a" href="#">
-                <ListItemIcon>
+        <ListNavBar>
+            <ListItemNavBar component="a" href="#">
+                <ListItemIconNavBar>
                     <EmailOutlinedIcon />
-                </ListItemIcon>
-                <ListItemText primary="Messages" />
-            </ListItem>
-            <ListItem component="a" href="#">
-                <ListItemIcon>
+                </ListItemIconNavBar>
+                <ListItemTextNavBar primary="Messages" />
+            </ListItemNavBar>
+            <ListItemNavBar component="a" href="#">
+                <ListItemIconNavBar>
                     <NotificationsNoneOutlinedIcon />
-                </ListItemIcon>
-                <ListItemText primary="Notifications" />
-            </ListItem>
-            <ListItem component="a" href="#">
-                <ListItemIcon>
+                </ListItemIconNavBar>
+                <ListItemTextNavBar primary="Notifications" />
+            </ListItemNavBar>
+            <ListItemNavBar component="a" href="#">
+                <ListItemIconNavBar>
                     <GroupsOutlinedIcon />
-                </ListItemIcon>
-                <ListItemText primary="Forum" />
-            </ListItem>
-            <ListItem component="a" href="#">
-                <ListItemIcon>
+                </ListItemIconNavBar>
+                <ListItemTextNavBar primary="Forum" />
+            </ListItemNavBar>
+            <ListItemNavBar component="a" href="#">
+                <ListItemIconNavBar>
                     <BusinessCenterOutlinedIcon />
-                </ListItemIcon>
-                <ListItemText primary="Jobs" />
-            </ListItem>
-            <ListItem component="a" href="#">
-                <ListItemIcon>
+                </ListItemIconNavBar>
+                <ListItemTextNavBar primary="Jobs" />
+            </ListItemNavBar>
+            <ListItemNavBar component="a" href="#">
+                <ListItemIconNavBar>
                     <ArticleOutlinedIcon />
-                </ListItemIcon>
-                <ListItemText primary="Blogpost" />
-            </ListItem>
-            <ListItem component="a" href="#">
-                <ListItemIcon>
+                </ListItemIconNavBar>
+                <ListItemTextNavBar primary="Blogpost" />
+            </ListItemNavBar>
+            <ListItemNavBar component="a" href="#">
+                <ListItemIconNavBar>
                     <WebOutlinedIcon />
-                </ListItemIcon>
-                <ListItemText primary="My Website" />
-            </ListItem>
-        </List>
+                </ListItemIconNavBar>
+                <ListItemTextNavBar primary="My Website" />
+            </ListItemNavBar>
+        </ListNavBar>
     );
 };
 
