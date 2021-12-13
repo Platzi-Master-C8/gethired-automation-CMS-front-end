@@ -2,8 +2,7 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Avatar from '@mui/material/Avatar';
-import { deepPurple } from '@mui/material/colors';
+import Avatar from '../Avatar/Avatar';
 import Navbar from '../Navbar/Navbar';
 import NavbarWebMaker from '../NavbarWebMaker/NavbarWebMaker';
 import SearchAppBar from '../Search/Search';
@@ -36,7 +35,7 @@ const Header = () => {
                     />
                     <SearchAppBar />
                     {pathNameLocation === '/webmaker' ? <NavbarWebMaker /> : <Navbar />}
-                    <Avatar sx={{ bgcolor: deepPurple[500] }}>J</Avatar>
+                    <Avatar />
                     <Menu />
                 </Toolbar>
             </AppBar>
