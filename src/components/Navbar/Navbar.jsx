@@ -17,6 +17,9 @@ const ListNavBar = styled(List)`
     align-items: center;
     padding-bottom: 0;
     margin-right: 20px;
+    @media (max-width: 600px) {
+        display: none;
+    }
 `;
 
 const ListItemNavBar = styled(ListItem)`
