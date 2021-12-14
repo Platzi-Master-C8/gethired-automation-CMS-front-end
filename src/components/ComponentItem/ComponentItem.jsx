@@ -6,7 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
 // eslint-disable-next-line no-unused-vars
-const EditComponent = ({ icon, text }) => (
+const ComponentItem = ({ icon, text }) => (
     <ListItem disablePadding draggable>
         <ListItemButton>
             <ListItemIcon>{icon}</ListItemIcon>
@@ -15,4 +15,4 @@ const EditComponent = ({ icon, text }) => (
     </ListItem>
 );
 
-export default EditComponent;
+export default ComponentItem;

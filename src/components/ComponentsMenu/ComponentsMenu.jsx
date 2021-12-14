@@ -8,7 +8,7 @@ import AddToQueueIcon from '@mui/icons-material/AddToQueue';
 import TextFieldsIcon from '@mui/icons-material/TextFields';
 import ImageIcon from '@mui/icons-material/Image';
 import SmartButtonIcon from '@mui/icons-material/SmartButton';
-import EditComponent from '../EditComponent/EditComponent';
+import ComponentItem from '../ComponentItem/ComponentItem';
 
 // const componentes = ['Contenedor', 'Titulo', 'Imagen', 'Boton']
 
@@ -27,10 +27,10 @@ const ComponentsMenu = () => {
                     </ListItemButton>
                     {open && (
                         <div>
-                            <EditComponent icon={<AddToQueueIcon />} text="Contenedor" />
-                            <EditComponent icon={<TextFieldsIcon />} text="Titulo" />
-                            <EditComponent icon={<ImageIcon />} text="Imagen" />
-                            <EditComponent icon={<SmartButtonIcon />} text="Boton" />
+                            <ComponentItem icon={<AddToQueueIcon />} text="Contenedor" />
+                            <ComponentItem icon={<TextFieldsIcon />} text="Titulo" />
+                            <ComponentItem icon={<ImageIcon />} text="Imagen" />
+                            <ComponentItem icon={<SmartButtonIcon />} text="Boton" />
                         </div>
                     )}
                 </List>
