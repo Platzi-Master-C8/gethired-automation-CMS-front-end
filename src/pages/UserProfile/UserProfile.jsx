@@ -3,13 +3,14 @@ import { UserInfo } from '../../components/UserInfo/UserInfo';
 import UserPages from '../../components/UserPages/UserPages';
 import Header from '../../components/Header/Header';
 
+import './UserProfile.scss';
+
 const UserProfile = () => {
     return (
         <React.Fragment>
             <Header />
-            <UserInfo />
-            <div>Templates</div>
-            <div className="pagesContainer">
+            <div className="profileContainer">
+                <UserInfo />
                 <UserPages />
             </div>
         </React.Fragment>

@@ -54,7 +54,7 @@ const UserPages = (pagesArr) => {
     pagesArr = testArr;
     return (
         <div className="pages-container">
-            <h3>Paginas:</h3>
+            <h3 className="pages-title">Paginas:</h3>
             {pagesArr.length === 0 ? (
                 <span>Loading</span>
             ) : (
