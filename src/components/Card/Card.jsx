@@ -10,7 +10,7 @@ import './Card.scss';
 const Card = ({ title, description, cover }) => {
     return (
         <CardUI variant="outlined" className="card">
-            <img src={cover} alt={title} className="card__image" />
+            <img src={cover} style={{ filter: 'blur(4px)' }} alt={title} className="card__image" />
 
             <div className="card__details">
                 <div className="buttons">

@@ -17,9 +17,6 @@ const ListNavBar = styled(List)`
     align-items: center;
     padding-bottom: 0;
     margin-right: 20px;
-    @media (max-width: 600px) {
-        display: none;
-    }
 `;
 
 const ListItemNavBar = styled(ListItem)`
@@ -51,7 +48,7 @@ const ListItemTextNavBar = styled(ListItemText)`
 
 const Navbar = () => {
     return (
-        <ListNavBar>
+        <ListNavBar sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' } }}>
             <ListItemNavBar component="a" href="#">
                 <ListItemIconNavBar>
                     <EmailOutlinedIcon />
