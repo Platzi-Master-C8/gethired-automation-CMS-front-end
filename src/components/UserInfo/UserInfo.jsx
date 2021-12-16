@@ -31,6 +31,7 @@ const ButtonStyle = styled(Button)(({ theme }) => ({
         [theme.size]: 'medium',
     },
 }));
+
 const UserInfo = () => {
     const icons = {
         LinkedIn: <LinkedInIcon sx={{ mr: 1 }} />,
