@@ -30,7 +30,7 @@ const MenuMobile = () => {
     };
     return (
         <React.Fragment>
-            <TooltipMenu>
+            <TooltipMenu sx={{ display: { xs: 'block', sm: 'block', md: 'block', lg: 'none' } }}>
                 <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
                     <MenuIcon sx={{ color: '#373F41' }} />
                 </IconButton>
