@@ -52,7 +52,8 @@ const TextFieldUserEdit = styled(TextField)`
     }
     .css-cio0x1-muiinputbase-root-muifilledinput-root:after,
     .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:hover:not(.Mui-disabled):before,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:after {
+    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:after,
+    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:before {
         border-bottom: 2px solid #ae4eff;
     }
 `;
