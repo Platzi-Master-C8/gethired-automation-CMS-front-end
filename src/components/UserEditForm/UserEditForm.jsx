@@ -40,7 +40,7 @@ const codigoPais = [
 
 const TextFieldUserEdit = styled(TextField)`
     margin: 10px 15px;
-    width: 250px;
+    width: 320px;
 
     .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root,
     .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
@@ -58,8 +58,10 @@ const TextFieldUserEdit = styled(TextField)`
 `;
 
 const TextFieldUserEditCountry = styled(TextField)`
-    margin: 10px 5px;
-    width: 105px;
+    margin-left: 15px;
+    width: 115px;
+    margin-top: 10px;
+    padding-bottom: 15px;
 
     .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root,
     .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
@@ -111,7 +113,7 @@ const RadioCustom = styled(Radio)`
 `;
 
 const GridContainer = styled(Grid)`
-    width: 55%;
+    width: 85%;
     padding: 0px 20px;
     @media (max-width: 800px) {
         width: 100%;
@@ -181,13 +183,12 @@ const UserEditForm = () => {
                         ))}
                     </TextFieldUserEdit>
                 </Grid>
-                <Grid item sm={5} xs={12}>
+                <Grid item sm={6} xs={12}>
                     <TextFieldUserEdit
                         id="date"
                         label="Fecha de Nacimiento"
                         type="date"
                         defaultValue="2017-05-24"
-                        sx={{ width: 250 }}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -210,7 +211,7 @@ const UserEditForm = () => {
                         ))}
                     </TextFieldUserEditCountry>
                 </Grid>
-                <Grid item sm={5} xs={12}>
+                <Grid item sm={4} xs={12}>
                     <TextFieldUserEditNumber
                         id="filled-select-currency"
                         label="Número"
@@ -281,4 +282,4 @@ const UserEditForm = () => {
     );
 };
 
-export { UserEditForm };
+export default UserEditForm;

@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserProfile } from '../pages/UserProfile/UserProfile';
 import { Webmaker } from '../pages/webmaker/Webmaker';
 import NotFound from '../pages/NotFound/NotFound';
-import { UserProfileEdit } from '../pages/UserProfileEdit/UserProfileEdit';
+import UserProfileEdit from '../pages/UserProfileEdit/UserProfileEdit';
 import './style.scss';
 
 const App = () => {

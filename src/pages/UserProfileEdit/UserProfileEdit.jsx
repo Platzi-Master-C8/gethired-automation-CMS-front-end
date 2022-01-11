@@ -1,14 +1,19 @@
 import React from 'react';
+import Stack from '@mui/material/Stack';
 import Header from '../../components/Header/Header';
-import { UserEditForm } from '../../components/UserEditForm/UserEditForm';
+import UserEditForm from '../../components/UserEditForm/UserEditForm';
+import UserEditAvatar from '../../components/UserEditAvatar/UserEditAvatar';
 
 const UserProfileEdit = () => {
     return (
         <React.Fragment>
             <Header />
-            <UserEditForm />
+            <Stack direction="row" justifyContent="center">
+                <UserEditAvatar />
+                <UserEditForm />
+            </Stack>
         </React.Fragment>
     );
 };
 
-export { UserProfileEdit };
+export default UserProfileEdit;
