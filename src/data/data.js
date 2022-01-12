@@ -1,22 +1,28 @@
-const userData = {
-    user_id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-    user_first_name: 'Carlos',
-    user_last_name: 'Santana',
-    user_email: 'user@example.com',
-    user_username: 'johndo',
-    user_dateOfBirth: [1, 5, 1950],
-    user_phone: 5512346578,
-    user_profession: 'Backend Developer',
-    user_gender: 'Male',
-    user_socia_networks: [
-        ['LinkedIn', 'https://www.linkedin.com/johnDo'],
-        ['GitHub', 'https://github.com/johnDo'],
-        ['Twitter', 'https://twitter.com/johnDo'],
-    ],
-    user_picture: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
-    User_knowledge_Level: ['Whitout Knowledge'],
+const user = {
+    user_id: 'c5e15933-d2c4-4f0a-80cc-aa650414ea5b',
+    user_first_name: 'Anthony',
+    user_last_name: 'Obrien',
+    user_email: 'john77@example.org',
+    user_password: 'vG&49KmK#6',
+    active: false,
+    user_phone: '001-735-617-1334x0410',
+    user_name: 'whitescott',
+    user_birth_day: '2017-10-01',
+    user_img_profile: '/behavior/world.json',
+    user_english_level: 'B1',
+    user_knowledge_level: 'without knowledge',
+    user_location: 'Lebanon',
+    user_creation_date: '2017-10-01T00:00:00+00:00',
+    user_education: 'university',
+    user_address: 'USNV Gillespie\nFPO AP 81914',
+    user_profession: 'Medical laboratory scientific officer',
+    user_rol: 'normal',
+    user_last_update: '2017-10-01T00:00:00+00:00',
+    user_subdomain: 'https://oconnor.com/',
+    user_gender: 'No binary',
+    user_looking_job: false,
     user_description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        'Into about practice consumer wonder. Day traditional voice. Player number meeting man our professor window.',
 };
 
-export { userData };
+export { user };
