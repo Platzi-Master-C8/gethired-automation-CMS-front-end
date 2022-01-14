@@ -2,7 +2,7 @@
 import 'regenerator-runtime/runtime.js';
 
 const getUser = async (userId) => {
-    const urlUser = `https://agile-tor-65287.herokuapp.com/profiles/users/${userId}`;
+    const urlUser = `https://agile-tor-65287.herokuapp.com/users/${userId}/profile`;
     const response = await fetch(urlUser);
 
     if (!response.ok) {
