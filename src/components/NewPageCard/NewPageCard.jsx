@@ -17,8 +17,8 @@ const NewPageCard = () => {
             }}
         >
             <Link to="/webmaker">
-                <CardUI>
-                    <CardActionArea>
+                <CardUI sx={{ width: '200px', height: '250px' }}>
+                    <CardActionArea sx={{ width: '100%', height: '100%' }}>
                         <CardContent>
                             <Box
                                 sx={{
