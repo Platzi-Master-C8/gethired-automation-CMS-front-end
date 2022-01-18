@@ -3,6 +3,7 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import { Link } from 'react-router-dom';
 import Avatar from '../Avatar/Avatar';
 import Navbar from '../Navbar/Navbar';
 import NavbarWebMaker from '../NavbarWebMaker/NavbarWebMaker';
@@ -29,11 +30,13 @@ const Header = () => {
                         gridTemplateColumns: '1fr auto',
                     }}
                 >
-                    <Box
-                        component="img"
-                        alt="Logo"
-                        src="https://firebasestorage.googleapis.com/v0/b/platzi-master-cms.appspot.com/o/Logo%20Plataforma%201.png?alt=media&token=49037ca8-9eb8-4ea7-80f1-a1aa14f58b50"
-                    />
+                    <Link to="/">
+                        <Box
+                            component="img"
+                            alt="Logo"
+                            src="https://firebasestorage.googleapis.com/v0/b/platzi-master-cms.appspot.com/o/Logo%20Plataforma%201.png?alt=media&token=49037ca8-9eb8-4ea7-80f1-a1aa14f58b50"
+                        />
+                    </Link>
                     <SearchAppBar />
                     {pathNameLocation === '/webmaker' ? <NavbarWebMaker /> : <Navbar />}
                     <Avatar />
