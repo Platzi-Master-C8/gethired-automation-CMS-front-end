@@ -15,6 +15,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 
+
 const avatarStyle = {
     width: [100, 100, 200, 200, 200],
     height: [100, 100, 200, 200, 200],
@@ -81,6 +82,7 @@ const UserInfo = ({ user }) => {
                         variant="body2"
                         align="justify"
                         sx={{ pr: 2 }}
+
                     >{`${user_description}`}</Typography>
                 </Grid>
             </Grid>
