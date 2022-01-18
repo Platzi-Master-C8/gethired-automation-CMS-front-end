@@ -14,6 +14,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 
 const avatarStyle = {
@@ -57,10 +58,19 @@ const UserInfo = ({ user }) => {
                     <SectionFirstStyle>
                         <Typography variant="h4">{`${user_first_name} ${user_last_name}`}</Typography>
                         <Typography variant="h7">{`${user_profession}`}</Typography>
-                        <Box sx={{ width: { sx: '100%' } }}>
-                            <ButtonStyle sx={{ mt: 2 }} variant="outlined" size="medium">
-                                Editar Perfil
-                            </ButtonStyle>
+                        <Box
+                            sx={{
+                                width: { sx: '100%' },
+                                a: {
+                                    textDecoration: 'none',
+                                },
+                            }}
+                        >
+                            <Link to="/edit">
+                                <ButtonStyle sx={{ mt: 2 }} variant="outlined" size="medium">
+                                    Editar Perfil
+                                </ButtonStyle>
+                            </Link>
                         </Box>
                     </SectionFirstStyle>
                 </Grid>
@@ -82,7 +92,6 @@ const UserInfo = ({ user }) => {
                         variant="body2"
                         align="justify"
                         sx={{ pr: 2 }}
-
                     >{`${user_description}`}</Typography>
                 </Grid>
             </Grid>
