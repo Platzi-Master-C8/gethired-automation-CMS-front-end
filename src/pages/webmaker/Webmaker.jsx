@@ -30,6 +30,7 @@ const Webmaker = () => {
     const [componentList, setComponentList] = useState([]);
     const [dragEndOverCanvas, setDragEndOverCanvas] = useState(false);
     const [dragItem, setDragItem] = useState(null);
+    // const [template, setTemplate] = useState(null);
 
     // const dragItem = useRef(null);
 
@@ -70,14 +71,14 @@ const Webmaker = () => {
         // console.log('drop', item, e);
         if (dragItem.type === 'container') {
             dragItem.canvasIndex = componentList.length;
-            dragItem.props.onDrop = (e) => {
-                console.log('drop', e.target);
-                console.log(componentList);
-            };
+            // dragItem.props.onDrop = (e) => {
+            //     console.log('drop', e.target);
+            //     console.log(componentList);
+            // };
             // dragItem.props.onDrop = () => {console.log('drop over a container')};
             // dragItem.props.onDragEnter = () => {console.log('drag over a container')};
             // dragItem.props.onDragLeave = () => {console.log('drag leave a container')};
-            console.log('container droped');
+            // console.log('container droped');
         }
         setComponentList([...componentList, dragItem]);
     };
@@ -101,6 +102,7 @@ const Webmaker = () => {
                         handleDragLeave={handleDragLeave}
                         handleDragOver={handleDragOver}
                         handleDrop={handleDrop}
+                        // template={template}
                     />
                 </Grid>
                 <Grid item xs={2} sx={[lateralMenu, scrollbar]}>
