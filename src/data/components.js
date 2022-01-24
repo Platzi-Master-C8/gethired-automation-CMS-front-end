@@ -96,7 +96,6 @@ const components = [
                                         display: 'flex',
                                         flexDirection: 'column',
                                         marginLeft: '85px',
-                                        // backgroundImage: 'linear-gradient(to right, #555BFF, #AE4EFF)'
                                     },
                                 },
                                 children: [
@@ -152,9 +151,7 @@ const components = [
                     style: {
                         display: 'flex-column',
                         width: '45%',
-                        // height: '200px',
-                        // alignItems: 'center',
-                        margin: '25px 0px',
+                        margin: '25px',
                         padding: '25px',
                     },
                 },
@@ -304,7 +301,7 @@ const components = [
                     style: {
                         display: 'flex-column',
                         width: '45%',
-                        margin: '25px 0px',
+                        margin: '25px',
                         padding: '25px',
                     },
                 },
@@ -452,10 +449,11 @@ const components = [
                 HTMLtag: 'div',
                 props: {
                     style: {
-                        display: 'flex-column',
-                        width: '35%',
-                        margin: '25px 0px',
+                        display: 'flex',
+                        width: '100%',
+                        margin: '25px',
                         padding: '25px',
+                        justifyContent: 'space-between',
                         border: '2px solid #AE4EFF',
                         borderRadius: '10px',
                     },
@@ -464,18 +462,571 @@ const components = [
                     {
                         isSelect: false,
                         readMode: false,
-                        HTMLtag: 'h3',
-                        props: {
-                            style: {
-                                fontSize: '30px',
-                                fontWeight: 'bold',
-                                color: '#AE4EFF',
-                                margin: '0px',
-                                padding: '0px',
+                        HTMLtag: 'div',
+                        props: {},
+                        children: [
+                            {
+                                isSelect: false,
+                                readMode: false,
+                                HTMLtag: 'h3',
+                                props: {
+                                    style: {
+                                        fontSize: '30px',
+                                        fontWeight: 'bold',
+                                        color: '#AE4EFF',
+                                        margin: '0px',
+                                        padding: '0px',
+                                    },
+                                },
+                                children: [],
+                                content: 'Contacto:',
                             },
-                        },
-                        children: [],
-                        content: 'Contacto:',
+                            {
+                                isSelect: false,
+                                readMode: false,
+                                HTMLtag: 'ul',
+                                props: {
+                                    style: {
+                                        listStyle: 'none',
+                                    },
+                                },
+                                children: [
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                display: 'flex',
+                                                margin: '15px',
+                                                padding: '0px',
+                                                alignItems: 'center',
+                                            },
+                                        },
+                                        children: [
+                                            {
+                                                isSelect: false,
+                                                readMode: false,
+                                                HTMLtag: 'img',
+                                                props: {
+                                                    src: 'https://firebasestorage.googleapis.com/v0/b/master-74b27.appspot.com/o/CMS%2Fcomponents%2Ficons%2Fmail.png?alt=media&token=929b9a81-15f1-4748-a09d-dd1b73698cbc',
+                                                    alt: 'icono de mail',
+                                                    style: {
+                                                        width: '30px',
+                                                        height: '30px',
+                                                        marginRight: '10px',
+                                                    },
+                                                },
+                                                children: [],
+                                                content: null,
+                                            },
+                                            {
+                                                isSelect: false,
+                                                readMode: false,
+                                                HTMLtag: 'a',
+                                                props: {
+                                                    style: {
+                                                        fontSize: '16px',
+                                                        fontWeight: 'regular',
+                                                        color: '#000000',
+                                                        textDecoration: 'none',
+                                                    },
+                                                    href: 'mailto:',
+                                                },
+                                                children: [],
+                                                content: 'name@mail.com',
+                                            },
+                                        ],
+                                        content: null,
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                display: 'flex',
+                                                margin: '15px',
+                                                padding: '0px',
+                                                alignItems: 'center',
+                                            },
+                                        },
+                                        children: [
+                                            {
+                                                isSelect: false,
+                                                readMode: false,
+                                                HTMLtag: 'img',
+                                                props: {
+                                                    src: 'https://firebasestorage.googleapis.com/v0/b/master-74b27.appspot.com/o/CMS%2Fcomponents%2Ficons%2Fglobe.png?alt=media&token=bdd94faa-262a-4f4f-ac94-838dfd2fc2f5',
+                                                    alt: 'icono pagina web',
+                                                    style: {
+                                                        width: '30px',
+                                                        height: '30px',
+                                                        marginRight: '10px',
+                                                    },
+                                                },
+                                                children: [],
+                                                content: null,
+                                            },
+                                            {
+                                                isSelect: false,
+                                                readMode: false,
+                                                HTMLtag: 'a',
+                                                props: {
+                                                    style: {
+                                                        fontSize: '16px',
+                                                        fontWeight: 'regular',
+                                                        color: '#000000',
+                                                        textDecoration: 'none',
+                                                    },
+                                                    href: 'misitioweb.com',
+                                                },
+                                                children: [],
+                                                content: 'misitioweb.com',
+                                            },
+                                        ],
+                                        content: null,
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                display: 'flex',
+                                                margin: '15px',
+                                                padding: '0px',
+                                                alignItems: 'center',
+                                            },
+                                        },
+                                        children: [
+                                            {
+                                                isSelect: false,
+                                                readMode: false,
+                                                HTMLtag: 'img',
+                                                props: {
+                                                    src: 'https://firebasestorage.googleapis.com/v0/b/master-74b27.appspot.com/o/CMS%2Fcomponents%2Ficons%2Fphone.png?alt=media&token=007072f6-4e53-4f7e-8c2a-240b6e304bba',
+                                                    alt: 'icono de telefono',
+                                                    style: {
+                                                        width: '30px',
+                                                        height: '30px',
+                                                        marginRight: '10px',
+                                                    },
+                                                },
+                                                children: [],
+                                                content: null,
+                                            },
+                                            {
+                                                isSelect: false,
+                                                readMode: false,
+                                                HTMLtag: 'a',
+                                                props: {
+                                                    style: {
+                                                        fontSize: '16px',
+                                                        fontWeight: 'regular',
+                                                        color: '#000000',
+                                                        textDecoration: 'none',
+                                                    },
+                                                    href: 'callto:',
+                                                },
+                                                children: [],
+                                                content: '1234567890',
+                                            },
+                                        ],
+                                        content: null,
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                display: 'flex',
+                                                margin: '15px',
+                                                padding: '0px',
+                                                alignItems: 'center',
+                                            },
+                                        },
+                                        children: [
+                                            {
+                                                isSelect: false,
+                                                readMode: false,
+                                                HTMLtag: 'img',
+                                                props: {
+                                                    src: 'https://firebasestorage.googleapis.com/v0/b/master-74b27.appspot.com/o/CMS%2Fcomponents%2Ficons%2Flinkedin.png?alt=media&token=ab047a1b-1c04-492b-b692-f9c1dd11cce0',
+                                                    alt: 'icono de linkedin',
+                                                    style: {
+                                                        width: '30px',
+                                                        height: '30px',
+                                                        marginRight: '10px',
+                                                    },
+                                                },
+                                                children: [],
+                                                content: null,
+                                            },
+                                            {
+                                                isSelect: false,
+                                                readMode: false,
+                                                HTMLtag: 'a',
+                                                props: {
+                                                    style: {
+                                                        fontSize: '16px',
+                                                        fontWeight: 'regular',
+                                                        color: '#000000',
+                                                        textDecoration: 'none',
+                                                    },
+                                                    href: 'https://www.linkedin.com/in/',
+                                                },
+                                                children: [],
+                                                content: 'linkedin.com/in/',
+                                            },
+                                        ],
+                                        content: null,
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                display: 'flex',
+                                                margin: '15px',
+                                                padding: '0px',
+                                                alignItems: 'center',
+                                            },
+                                        },
+                                        children: [
+                                            {
+                                                isSelect: false,
+                                                readMode: false,
+                                                HTMLtag: 'img',
+                                                props: {
+                                                    src: 'https://firebasestorage.googleapis.com/v0/b/master-74b27.appspot.com/o/CMS%2Fcomponents%2Ficons%2Fgithub.png?alt=media&token=1dfdf814-3fc8-44b8-b56e-a9b9c30a0ce9',
+                                                    alt: 'icono de github',
+                                                    style: {
+                                                        width: '30px',
+                                                        height: '30px',
+                                                        marginRight: '10px',
+                                                    },
+                                                },
+                                                children: [],
+                                                content: null,
+                                            },
+                                            {
+                                                isSelect: false,
+                                                readMode: false,
+                                                HTMLtag: 'a',
+                                                props: {
+                                                    style: {
+                                                        fontSize: '16px',
+                                                        fontWeight: 'regular',
+                                                        color: '#000000',
+                                                        textDecoration: 'none',
+                                                    },
+                                                    href: 'https://www.github.com/',
+                                                },
+                                                children: [],
+                                                content: 'github.com/',
+                                            },
+                                        ],
+                                        content: null,
+                                    },
+                                ],
+                                content: null,
+                            },
+                        ],
+                        content: null,
+                    },
+                    {
+                        isSelect: false,
+                        readMode: false,
+                        HTMLtag: 'div',
+                        props: {},
+                        children: [
+                            {
+                                isSelect: false,
+                                readMode: false,
+                                HTMLtag: 'h3',
+                                props: {
+                                    style: {
+                                        fontSize: '30px',
+                                        fontWeight: 'bold',
+                                        color: '#AE4EFF',
+                                        margin: '0px',
+                                        padding: '0px',
+                                    },
+                                },
+                                children: [],
+                                content: 'Skills:',
+                            },
+                            {
+                                isSelect: false,
+                                readMode: false,
+                                HTMLtag: 'ul',
+                                props: {
+                                    style: {
+                                        display: 'flex',
+                                        maxWidth: '300px',
+                                        flexWrap: 'wrap',
+                                        listStyle: 'none',
+                                    },
+                                },
+                                children: [
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                                border: '2px solid #AE4EFF',
+                                                borderRadius: '16px',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'JavaScript',
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                                border: '2px solid #AE4EFF',
+                                                borderRadius: '16px',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'ReactJS',
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                                border: '2px solid #AE4EFF',
+                                                borderRadius: '16px',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'HTML5',
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                                border: '2px solid #AE4EFF',
+                                                borderRadius: '16px',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'CSS3',
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                                border: '2px solid #AE4EFF',
+                                                borderRadius: '16px',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'SASS',
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                                border: '2px solid #AE4EFF',
+                                                borderRadius: '16px',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'Python',
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                                border: '2px solid #AE4EFF',
+                                                borderRadius: '16px',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'Jest',
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                                border: '2px solid #AE4EFF',
+                                                borderRadius: '16px',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'Git',
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                                border: '2px solid #AE4EFF',
+                                                borderRadius: '16px',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'Cobol',
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                                border: '2px solid #AE4EFF',
+                                                borderRadius: '16px',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'TypeScript',
+                                    },
+                                ],
+                                content: null,
+                            },
+                        ],
+                        content: null,
+                    },
+                    {
+                        isSelect: false,
+                        readMode: false,
+                        HTMLtag: 'div',
+                        props: {},
+                        children: [
+                            {
+                                isSelect: false,
+                                readMode: false,
+                                HTMLtag: 'h3',
+                                props: {
+                                    style: {
+                                        fontSize: '30px',
+                                        fontWeight: 'bold',
+                                        color: '#AE4EFF',
+                                        margin: '0px',
+                                        padding: '0px',
+                                    },
+                                },
+                                children: [],
+                                content: 'Idiomas:',
+                            },
+                            {
+                                isSelect: false,
+                                readMode: false,
+                                HTMLtag: 'ul',
+                                props: {
+                                    style: {
+                                        listStyle: 'none',
+                                    },
+                                },
+                                children: [
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '16px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'Español - Nativo',
+                                    },
+                                    {
+                                        isSelect: false,
+                                        readMode: false,
+                                        HTMLtag: 'li',
+                                        props: {
+                                            style: {
+                                                margin: '5px',
+                                                padding: '8px',
+                                                fontSize: '16px',
+                                                fontWeight: 'bold',
+                                                color: '#000000',
+                                            },
+                                        },
+                                        children: [],
+                                        content: 'Inglés - B1',
+                                    },
+                                ],
+                                content: null,
+                            },
+                        ],
+                        content: null,
                     },
                 ],
                 content: null,
@@ -690,6 +1241,7 @@ const components = [
                         borderRadius: '5px',
                         borderStyle: 'none',
                         cursor: 'pointer',
+                        margin: '10px',
                     },
                     onClick: () => {
                         alert('Hola');
