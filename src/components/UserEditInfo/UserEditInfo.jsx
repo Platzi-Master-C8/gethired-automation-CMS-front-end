@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, TextField, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { useUser, useDispatch } from '../../store/UserProvider';
+import { TYPES } from '../../store/types';
 
 const TextFieldUserEdit = styled(TextField)`
     margin: 10px 15px;
@@ -35,6 +37,19 @@ const TextArea = styled(TextField)`
 `;
 
 const UserEditInfo = () => {
+    const userState = useUser();
+    const { user } = userState;
+    const dispatch = useDispatch();
+    // const userDescriptionRef = useRef();
+
+    // eslint-disable-next-line dot-notation
+    const [description, setDescription] = useState(user['user_description']);
+
+    useEffect(() => {
+        // console.log('Descripcion : ', userDescriptionRef.current);
+        dispatch({ type: TYPES.UPDATE_USER, payload: { user_description: description } });
+    }, [description, dispatch]);
+
     return (
         <Grid container sx={{ width: '85%', margin: 'auto' }}>
             <Grid item sm={4}>
@@ -58,7 +73,7 @@ const UserEditInfo = () => {
                     variant="filled"
                 />
             </Grid>
-            <Grid sm={8}>
+            <Grid item sm={8}>
                 <Typography sx={{ fontSize: 20, fontWeight: 500, margin: '10px 0px' }}>
                     Un resumen para que todo el mundo te conozca:
                 </Typography>
@@ -66,8 +81,12 @@ const UserEditInfo = () => {
                     id="standard-multiline-static"
                     multiline
                     rows={8}
-                    defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                    value={description}
                     variant="standard"
+                    onChange={(e) => {
+                        setDescription(e.target.value);
+                        dispatch({ type: TYPES.UPDATE_USER, payload: { user_description: e.target.value } });
+                    }}
                 />
             </Grid>
         </Grid>

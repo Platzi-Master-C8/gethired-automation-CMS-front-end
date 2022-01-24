@@ -25,4 +25,31 @@ const user = {
         'Into about practice consumer wonder. Day traditional voice. Player number meeting man our professor window.',
 };
 
-export { user };
+// const userUpdate = {
+//     user_id: '',
+//     user_first_name: '',
+//     user_last_name: '',
+//     user_email: '',
+//     user_password: '',
+//     active: false,
+//     user_phone: '',
+//     user_name: '',
+//     user_birth_day: '',
+//     user_img_profile: '',
+//     user_english_level: '',
+//     user_knowledge_level: '',
+//     user_location: '',
+//     user_creation_date: '',
+//     user_education: '',
+//     user_address: '',
+//     user_profession: '',
+//     user_rol: '',
+//     user_last_update: '',
+//     user_subdomain: '',
+//     user_gender: '',
+//     user_looking_job: false,
+//     user_description: '',
+// };
+const userUpdate = {};
+
+export { user, userUpdate };

@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable dot-notation */
+import React, { useEffect, useState, useRef } from 'react';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
@@ -7,34 +8,24 @@ import Grid from '@mui/material/Grid';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { useUser, useDispatch } from '../../store/UserProvider';
+import { TYPES } from '../../store/types';
 
 const experiencia = [
     {
-        value: 'Sin Conocimiento',
-        label: 'Sin Conocimiento',
+        id: 1,
+        value: 'without knowledge',
+        label: 'without knowledge',
     },
     {
-        value: 'Proficiente',
-        label: 'Proficiente',
+        id: 2,
+        value: 'proficient',
+        label: 'proficient',
     },
     {
-        value: 'Experto',
-        label: 'Experto',
-    },
-];
-
-const codigoPais = [
-    {
-        value: 'México',
-        label: '+52',
-    },
-    {
-        value: 'Estados Unidos',
-        label: '+1',
-    },
-    {
-        value: 'Canadá',
-        label: '+1',
+        id: 3,
+        value: 'expert',
+        label: 'expert',
     },
 ];
 
@@ -55,31 +46,6 @@ const TextFieldUserEdit = styled(TextField)`
     .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:after,
     .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:before {
         border-bottom: 2px solid #ae4eff;
-    }
-`;
-
-const TextFieldUserEditCountry = styled(TextField)`
-    margin-left: 15px;
-    width: 115px;
-    margin-top: 10px;
-    padding-bottom: 15px;
-
-    .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root,
-    .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-        color: #ae4eff;
-    }
-    .css-10botns-MuiInputBase-input-MuiFilledInput-input {
-        font-weight: 500;
-        font-size: 18px;
-    }
-    .css-cio0x1-muiinputbase-root-muifilledinput-root:after,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:hover:not(.Mui-disabled):before,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:after {
-        border-bottom: 2px solid #ae4eff;
-    }
-    @media (max-width: 400px) {
-        width: 250px;
-        margin: 10px 15px;
     }
 `;
 
@@ -127,16 +93,47 @@ const GridItem = styled(Grid)`
 `;
 
 const UserEditForm = () => {
-    const [experienciaUser, setExperienciaUser] = React.useState('Sin Conocimiento');
-    const [codigoPaisUser, setCodigoPais] = React.useState('+52');
+    const userState = useUser();
+    const { user } = userState;
+    const dispatch = useDispatch();
+
+    const userFirstNameRef = useRef();
+    const userLastNameRef = useRef();
+    const userProfessionRef = useRef();
+    const userPhoneRef = useRef();
+    const userKnowledgeLevel = useRef();
+    const userEmailRef = useRef();
+    const userNameRef = useRef();
+    const [gender, setGender] = useState(user['user_gender']);
+
+    const [experienciaUser, setExperienciaUser] = useState('without knowledge');
 
     const handleChangeExperienciaUser = (event) => {
         setExperienciaUser(event.target.value);
+        dispatch({ type: TYPES.UPDATE_USER, payload: { user_knowledge_level: event.target.value } });
     };
 
-    const handleChangeCodigoPais = (event) => {
-        setCodigoPais(event.target.value);
+    const handleGender = (event) => {
+        setGender(event.target.value);
+        dispatch({ type: TYPES.UPDATE_USER, payload: { user_gender: event.target.value } });
     };
+
+    useEffect(() => {
+        dispatch({
+            type: TYPES.UPDATE_USER,
+            payload: {
+                user_id: user['user_id'],
+                user_first_name: userFirstNameRef.current.defaultValue,
+                user_last_name: userLastNameRef.current.defaultValue,
+                user_profession: userProfessionRef.current.defaultValue,
+                user_phone: userPhoneRef.current.defaultValue,
+                user_knowledge_level: userKnowledgeLevel.current.value,
+                user_email: userEmailRef.current.value,
+                user_name: userNameRef.current.value,
+                user_gender: gender,
+            },
+        });
+    }, [dispatch, gender, user]);
 
     return (
         <div>
@@ -146,30 +143,43 @@ const UserEditForm = () => {
             <GridContainer container spacing={1}>
                 <Grid item sm={6} xs={12}>
                     <TextFieldUserEdit
+                        inputRef={userFirstNameRef}
                         id="filled-required"
                         label="Nombre(s)"
-                        defaultValue="Johnnie Daniel"
+                        defaultValue={user['user_first_name']}
+                        onChange={(e) =>
+                            dispatch({ type: TYPES.UPDATE_USER, payload: { user_first_name: e.target.value } })
+                        }
                         variant="filled"
                     />
                 </Grid>
                 <Grid item sm={6} xs={12}>
                     <TextFieldUserEdit
+                        inputRef={userLastNameRef}
                         id="filled-required"
                         label="Apellidos"
-                        defaultValue="Ruiz Schambach"
+                        defaultValue={user['user_last_name']}
+                        onChange={(e) =>
+                            dispatch({ type: TYPES.UPDATE_USER, payload: { user_last_name: e.target.value } })
+                        }
                         variant="filled"
                     />
                 </Grid>
                 <Grid item sm={6} xs={12}>
                     <TextFieldUserEdit
+                        inputRef={userProfessionRef}
                         id="filled-required"
                         label="Titulo/Profesión"
-                        defaultValue="Full Stack Developer"
+                        defaultValue={user['user_profession']}
+                        onChange={(e) =>
+                            dispatch({ type: TYPES.UPDATE_USER, payload: { user_profession: e.target.value } })
+                        }
                         variant="filled"
                     />
                 </Grid>
                 <Grid item sm={6} xs={12}>
                     <TextFieldUserEdit
+                        inputRef={userKnowledgeLevel}
                         id="filled-select-currency"
                         select
                         label="Nivel de Conocimiento"
@@ -178,7 +188,7 @@ const UserEditForm = () => {
                         variant="filled"
                     >
                         {experiencia.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
+                            <MenuItem key={option.id} value={option.value}>
                                 {option.label}
                             </MenuItem>
                         ))}
@@ -196,35 +206,21 @@ const UserEditForm = () => {
                         variant="filled"
                     />
                 </Grid>
-                <Grid item sm={2} xs={12}>
-                    <TextFieldUserEditCountry
-                        id="filled-select-currency"
-                        select
-                        label="Código de País"
-                        value={codigoPaisUser}
-                        onChange={handleChangeCodigoPais}
-                        variant="filled"
-                    >
-                        {codigoPais.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextFieldUserEditCountry>
-                </Grid>
                 <Grid item sm={4} xs={12}>
                     <TextFieldUserEditNumber
+                        inputRef={userPhoneRef}
                         id="filled-select-currency"
                         label="Número"
-                        defaultValue="55 1234 5678"
+                        defaultValue={user['user_phone']}
+                        onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_phone: e.target.value } })}
                         variant="filled"
                     />
                 </Grid>
                 <GridItem item sm={6} xs={12}>
                     <Typography sx={{ color: '#000', fontWeight: 600, fontSize: 16 }}>Género</Typography>
-                    <RadioGroup aria-label="gender" defaultValue="mujer" name="radio-buttons-group">
+                    <RadioGroup aria-label="gender" value={gender} onChange={handleGender} name="use-radio-group">
                         <FormControlLabel
-                            value="mujer"
+                            value="Female"
                             control={
                                 <RadioCustom
                                     sx={{
@@ -234,10 +230,10 @@ const UserEditForm = () => {
                                     }}
                                 />
                             }
-                            label="Mujer"
+                            label="Female"
                         />
                         <FormControlLabel
-                            value="hombre"
+                            value="Male"
                             control={
                                 <RadioCustom
                                     sx={{
@@ -247,10 +243,10 @@ const UserEditForm = () => {
                                     }}
                                 />
                             }
-                            label="Hombre"
+                            label="Male"
                         />
                         <FormControlLabel
-                            value="otro"
+                            value="No binary"
                             control={
                                 <RadioCustom
                                     sx={{
@@ -260,21 +256,25 @@ const UserEditForm = () => {
                                     }}
                                 />
                             }
-                            label="Otro"
+                            label="No binary"
                         />
                     </RadioGroup>
                 </GridItem>
                 <Grid item xs={6}>
                     <TextFieldUserEdit
+                        inputRef={userEmailRef}
                         id="filled-required"
                         label="Email"
-                        defaultValue="Email@Email.com"
+                        defaultValue={user['user_email']}
+                        onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_email: e.target.value } })}
                         variant="filled"
                     />
                     <TextFieldUserEdit
+                        inputRef={userNameRef}
                         id="filled-required"
                         label="Username"
-                        defaultValue="johnniedrs"
+                        defaultValue={user['user_name']}
+                        onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_name: e.target.value } })}
                         variant="filled"
                     />
                 </Grid>
