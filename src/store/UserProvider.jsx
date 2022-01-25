@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { createContext, useReducer, useContext } from 'react';
-import userReducer from './StoreReducer';
+import userReducer from './storeReducer';
 import { user, userUpdate } from '../data/data';
 
 const UserContext = createContext();
