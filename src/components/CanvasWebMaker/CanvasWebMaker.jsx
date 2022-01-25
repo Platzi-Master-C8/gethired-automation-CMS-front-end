@@ -4,7 +4,15 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
-const CanvasWebMaker = ({ componentList, handleDragEnter, handleDragLeave, handleDragOver, handleDrop }) => {
+const renderComponent = (component) => {
+    return React.createElement(
+        component.HTMLtag,
+        component.props,
+        component.children.length !== 0 ? component.children.map((child) => renderComponent(child)) : component.content,
+    );
+};
+
+const CanvasWebMaker = ({ handleDragEnter, handleDragLeave, handleDragOver, handleDrop, componentList }) => {
     return (
         <Container
             maxWidth="xl"
@@ -18,6 +26,10 @@ const CanvasWebMaker = ({ componentList, handleDragEnter, handleDragLeave, handl
                     bgcolor: '#fff',
                     minHeight: '90vh',
                     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    alignItems: 'flex-start',
+                    justifyContent: 'center',
                 }}
                 onDragEnter={handleDragEnter}
                 onDragLeave={handleDragLeave}
@@ -28,11 +40,7 @@ const CanvasWebMaker = ({ componentList, handleDragEnter, handleDragLeave, handl
                     <React.Fragment>
                         {componentList.map((component) => {
                             component.props.key = componentList.indexOf(component);
-                            return React.createElement(
-                                component.HTMLtag,
-                                component.props,
-                                component.children || component.content,
-                            );
+                            return renderComponent(component);
                         })}
                     </React.Fragment>
                 )}
