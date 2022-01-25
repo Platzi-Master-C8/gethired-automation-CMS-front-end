@@ -1,7 +1,17 @@
 import React from 'react';
 import { Button, Box, Stack } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { useDispatch } from '../../store/UserProvider';
+import { TYPES } from '../../store/types';
 
 const UserEditButtons = () => {
+    const dispatch = useDispatch();
+
+    const handleUpdateUser = () => {
+        const userId = 'aa07fe89-6ef8-4a97-bd25-a985c72c67af';
+        dispatch({ type: TYPES.PUT_UPDATE_USER, payload: userId });
+    };
+
     return (
         <Box
             sx={{
@@ -23,10 +33,14 @@ const UserEditButtons = () => {
                         '&:hover': {
                             backgroundColor: '#FF5353',
                         },
+                        a: {
+                            textDecoration: 'none',
+                            color: '#fff',
+                        },
                     }}
                     variant="contained"
                 >
-                    Descartar cambios
+                    <Link to="/">Descartar cambios</Link>
                 </Button>
                 <Button
                     sx={{
@@ -40,6 +54,7 @@ const UserEditButtons = () => {
                         },
                     }}
                     variant="contained"
+                    onClick={handleUpdateUser}
                 >
                     Guardar los cambios
                 </Button>

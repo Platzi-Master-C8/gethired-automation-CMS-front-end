@@ -16,7 +16,6 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 
-
 const avatarStyle = {
     width: [100, 100, 200, 200, 200],
     height: [100, 100, 200, 200, 200],

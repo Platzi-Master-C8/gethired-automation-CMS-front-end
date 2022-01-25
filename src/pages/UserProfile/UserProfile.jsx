@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 
 import { useUser, useDispatch } from '../../store/UserProvider';
 import getUser from '../../data/getUser';
-import { TYPES } from '../../store/TYPES';
+import { TYPES } from '../../store/types';
 import Spinner from '../../components/spinner/Spinner';
 
 import './UserProfile.scss';
@@ -16,7 +16,7 @@ const UserProfile = () => {
     const dispatch = useDispatch();
 
     const updateUser = () => {
-        const userId = '9243ff9a-70f6-408b-b8a1-eb814b318fa7';
+        const userId = 'aa07fe89-6ef8-4a97-bd25-a985c72c67af';
 
         getUser(userId)
             .then((newUser) =>
@@ -26,6 +26,7 @@ const UserProfile = () => {
                 dispatch({ type: TYPES.ERROR, payload: { isLoading: false, error: err, user: {} } });
             });
     };
+
     useEffect(() => {
         updateUser();
         // eslint-disable-next-line react-hooks/exhaustive-deps
