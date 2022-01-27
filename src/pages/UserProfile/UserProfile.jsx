@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { UserInfo } from '../../components/UserInfo/UserInfo';
 import UserPages from '../../components/UserPages/UserPages';
+import UserTemplates from '../../components/UserTemplates/UserTemplates';
 import Header from '../../components/Header/Header';
 
 import { useUser, useDispatch } from '../../store/UserProvider';
@@ -41,6 +42,7 @@ const UserProfile = () => {
                 <div className="profileContainer">
                     <UserInfo user={user} />
                     <UserPages />
+                    <UserTemplates />
                 </div>
             )}
         </React.Fragment>
