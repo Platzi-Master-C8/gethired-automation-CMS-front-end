@@ -11,12 +11,10 @@ const userReducer = (state, action) => {
             return { ...state, userUpdate: { ...state.userUpdate, ...action.payload } };
         case TYPES.PUT_UPDATE_USER: {
             const updateUser = { ...state.user, ...state.userUpdate };
-
-            const hola = async () => {
+            const userEdit = async () => {
                 await putUser(action.payload, updateUser);
             };
-            hola();
-
+            userEdit();
             return { ...state, user: { ...state.user } };
         }
         default:

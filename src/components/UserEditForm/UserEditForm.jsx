@@ -93,8 +93,7 @@ const GridItem = styled(Grid)`
 `;
 
 const UserEditForm = () => {
-    const userState = useUser();
-    const { user } = userState;
+    const { user } = useUser();
     const dispatch = useDispatch();
 
     const userFirstNameRef = useRef();

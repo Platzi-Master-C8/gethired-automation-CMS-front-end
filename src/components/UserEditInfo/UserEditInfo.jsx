@@ -37,8 +37,7 @@ const TextArea = styled(TextField)`
 `;
 
 const UserEditInfo = () => {
-    const userState = useUser();
-    const { user } = userState;
+    const { user } = useUser();
     const dispatch = useDispatch();
     // const userDescriptionRef = useRef();
 

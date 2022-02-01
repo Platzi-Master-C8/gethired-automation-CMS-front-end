@@ -68,13 +68,8 @@ const UserTemplates = (templatesArr) => {
                 ) : (
                     <Grid container spacing={1}>
                         {templatesArr.map((page) => (
-                            <Grid item xs={12} sm={6} md={4} lg={2.4}>
-                                <Card
-                                    key={page.id}
-                                    title={page.title}
-                                    description={page.description}
-                                    cover={page.img}
-                                />
+                            <Grid key={page.id} item xs={12} sm={6} md={4} lg={2.4}>
+                                <Card title={page.title} description={page.description} cover={page.img} />
                             </Grid>
                         ))}
                     </Grid>

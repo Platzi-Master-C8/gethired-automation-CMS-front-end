@@ -8,7 +8,12 @@ const renderComponent = (component) => {
     return React.createElement(
         component.HTMLtag,
         component.props,
-        component.children.length !== 0 ? component.children.map((child) => renderComponent(child)) : component.content,
+        component.children.length !== 0
+            ? component.children.map((child) => {
+                  child.props.key = component.children.indexOf(child);
+                  return renderComponent(child);
+              })
+            : component.content,
     );
 };
 

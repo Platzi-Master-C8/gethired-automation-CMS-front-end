@@ -1,14 +1,15 @@
 import React from 'react';
 import { Button, Box, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useDispatch } from '../../store/UserProvider';
+import { useDispatch, useUser } from '../../store/UserProvider';
 import { TYPES } from '../../store/types';
 
 const UserEditButtons = () => {
     const dispatch = useDispatch();
+    const { user } = useUser();
 
     const handleUpdateUser = () => {
-        const userId = 'aa07fe89-6ef8-4a97-bd25-a985c72c67af';
+        const userId = user.user_id;
         dispatch({ type: TYPES.PUT_UPDATE_USER, payload: userId });
     };
 
