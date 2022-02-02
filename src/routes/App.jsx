@@ -6,6 +6,7 @@ import NotFound from '../pages/NotFound/NotFound';
 import UserProfileEdit from '../pages/UserProfileEdit/UserProfileEdit';
 import './style.scss';
 import UserProvider from '../store/UserProvider';
+import WebmakerProvider from '../pages/webmaker/WebmakerProvider';
 
 const App = () => {
     return (
@@ -14,7 +15,15 @@ const App = () => {
                 <Routes>
                     <Route exact path="/" element={<UserProfile />} />
                     <Route exact path="/edit" element={<UserProfileEdit />} />
-                    <Route exact path="/webmaker" element={<Webmaker />} />
+                    <Route
+                        exact
+                        path="/webmaker"
+                        element={
+                            <WebmakerProvider>
+                                <Webmaker />
+                            </WebmakerProvider>
+                        }
+                    />
                     <Route exact path="/preview" element={<h1>Preview</h1>} />
                     <Route exact path="/user" element={<UserProfile />} />
                     <Route path="*" element={<NotFound />} />

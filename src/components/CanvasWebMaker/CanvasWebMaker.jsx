@@ -3,6 +3,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import { useIsPreviewContext } from '../../pages/webmaker/WebmakerProvider';
 
 const renderComponent = (component) => {
     return React.createElement(
@@ -18,9 +19,11 @@ const renderComponent = (component) => {
 };
 
 const CanvasWebMaker = ({ handleDragEnter, handleDragLeave, handleDragOver, handleDrop, componentList }) => {
+    const { isPreview } = useIsPreviewContext();
     return (
         <Container
-            maxWidth="xl"
+            maxWidth={`${!isPreview ? 'xl' : '100vw'}`}
+            disableGutters
             sx={{
                 backgroundColor: '#E5E5E5',
                 padding: '10px',

@@ -10,6 +10,7 @@ import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import PhoneAndroidOutlinedIcon from '@mui/icons-material/PhoneAndroidOutlined';
 import DesktopMacOutlinedIcon from '@mui/icons-material/DesktopMacOutlined';
 import { styled } from '@mui/material/styles';
+import { useIsPreviewContext } from '../../pages/webmaker/WebmakerProvider';
 
 const ListNavBarWM = styled(List)`
     display: flex;
@@ -22,6 +23,7 @@ const ListItemIconNavBarWM = styled(ListItemIcon)`
 `;
 
 const NavbarWebMaker = () => {
+    const { isPreview, setIsPreview } = useIsPreviewContext();
     return (
         <ListNavBarWM>
             <ListItem
@@ -44,20 +46,31 @@ const NavbarWebMaker = () => {
                     paddingLeft: '0px',
                 }}
             >
-                <ListItemIconNavBarWM
+                <ListItemButton
+                    onClick={() => {
+                        setIsPreview(!isPreview);
+                    }}
                     sx={{
-                        placeContent: 'center',
+                        borderRadius: '0.5rem',
+                        border: `2px solid ${!isPreview ? 'rgba(255, 255, 255, .0)' : 'rgba(0, 0, 0, 0.3)'}`,
                     }}
                 >
-                    <PhoneAndroidOutlinedIcon />
-                    <DesktopMacOutlinedIcon />
-                </ListItemIconNavBarWM>
-                <ListItemText
-                    sx={{
-                        color: '#373f41',
-                    }}
-                    primary="Preview"
-                />
+                    <ListItemIconNavBarWM
+                        sx={{
+                            placeContent: 'center',
+                        }}
+                    >
+                        <PhoneAndroidOutlinedIcon />
+                        <DesktopMacOutlinedIcon />
+                    </ListItemIconNavBarWM>
+
+                    <ListItemText
+                        sx={{
+                            color: '#373f41',
+                        }}
+                        primary="Preview"
+                    />
+                </ListItemButton>
             </ListItem>
             <ListItem>
                 <ListItemButton

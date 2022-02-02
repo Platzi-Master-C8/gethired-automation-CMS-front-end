@@ -3,9 +3,9 @@ import Grid from '@mui/material/Grid';
 import { ComponentsMenu } from '../../components/ComponentsMenu/ComponentsMenu';
 import Header from '../../components/Header/Header';
 import CanvasWebMaker from '../../components/CanvasWebMaker/CanvasWebMaker';
-
 import components from '../../data/components';
 import cv from '../../data/cv-components';
+import { useIsPreviewContext } from './WebmakerProvider';
 
 const lateralMenu = {
     height: 'calc(100vh - 82px)',
@@ -30,6 +30,8 @@ const Webmaker = () => {
     const [componentList, setComponentList] = useState(template.components);
     const [dragEndOverCanvas, setDragEndOverCanvas] = useState(false);
     const [dragItem, setDragItem] = useState(null);
+
+    const { isPreview } = useIsPreviewContext();
 
     const handleDragStart = (e, item) => {
         setDragItem(item);
@@ -81,31 +83,47 @@ const Webmaker = () => {
     return (
         <React.Fragment>
             <Header />
-            <Grid container>
-                <Grid item xs={2} sx={[lateralMenu, scrollbar]}>
-                    <ComponentsMenu
-                        componentList={components}
-                        handleDragStart={handleDragStart}
-                        handleDragEnd={handleDragEnd}
-                    />
+
+            {!isPreview && (
+                <Grid container>
+                    {!isPreview && (
+                        <Grid item xs={2} sx={[lateralMenu, scrollbar]}>
+                            <ComponentsMenu
+                                componentList={components}
+                                handleDragStart={handleDragStart}
+                                handleDragEnd={handleDragEnd}
+                            />
+                        </Grid>
+                    )}
+                    <Grid item xs={8} sx={[lateralMenu, scrollbar]}>
+                        <CanvasWebMaker
+                            componentList={componentList}
+                            setComponentList={setComponentList}
+                            handleDragEnter={handleDragEnter}
+                            handleDragLeave={handleDragLeave}
+                            handleDragOver={handleDragOver}
+                            handleDrop={handleDrop}
+                            template={template}
+                        />
+                    </Grid>
+                    <Grid item xs={2} sx={[lateralMenu, scrollbar]}>
+                        <div className="components-editor">
+                            <p>Aqui va el editor de componentes</p>
+                        </div>
+                    </Grid>
                 </Grid>
-                <Grid item xs={8} sx={[lateralMenu, scrollbar]}>
-                    <CanvasWebMaker
-                        componentList={componentList}
-                        setComponentList={setComponentList}
-                        handleDragEnter={handleDragEnter}
-                        handleDragLeave={handleDragLeave}
-                        handleDragOver={handleDragOver}
-                        handleDrop={handleDrop}
-                        template={template}
-                    />
-                </Grid>
-                <Grid item xs={2} sx={[lateralMenu, scrollbar]}>
-                    <div className="components-editor">
-                        <p>Aqui va el editor de componentes</p>
-                    </div>
-                </Grid>
-            </Grid>
+            )}
+            {isPreview && (
+                <CanvasWebMaker
+                    componentList={componentList}
+                    setComponentList={setComponentList}
+                    handleDragEnter={handleDragEnter}
+                    handleDragLeave={handleDragLeave}
+                    handleDragOver={handleDragOver}
+                    handleDrop={handleDrop}
+                    template={template}
+                />
+            )}
         </React.Fragment>
     );
 };
