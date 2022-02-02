@@ -53,37 +53,37 @@ const Navbar = () => {
                 <ListItemIconNavBar>
                     <EmailOutlinedIcon />
                 </ListItemIconNavBar>
-                <ListItemTextNavBar primary="Messages" />
+                <ListItemTextNavBar primary="Mensajes" />
             </ListItemNavBar>
             <ListItemNavBar component="a" href="#">
                 <ListItemIconNavBar>
                     <NotificationsNoneOutlinedIcon />
                 </ListItemIconNavBar>
-                <ListItemTextNavBar primary="Notifications" />
+                <ListItemTextNavBar primary="Notificaciones" />
             </ListItemNavBar>
             <ListItemNavBar component="a" href="#">
                 <ListItemIconNavBar>
                     <GroupsOutlinedIcon />
                 </ListItemIconNavBar>
-                <ListItemTextNavBar primary="Forum" />
+                <ListItemTextNavBar primary="Foros" />
             </ListItemNavBar>
             <ListItemNavBar component="a" href="#">
                 <ListItemIconNavBar>
                     <BusinessCenterOutlinedIcon />
                 </ListItemIconNavBar>
-                <ListItemTextNavBar primary="Jobs" />
+                <ListItemTextNavBar primary="Empleos" />
             </ListItemNavBar>
             <ListItemNavBar component="a" href="#">
                 <ListItemIconNavBar>
                     <ArticleOutlinedIcon />
                 </ListItemIconNavBar>
-                <ListItemTextNavBar primary="Blogpost" />
+                <ListItemTextNavBar primary="Blog" />
             </ListItemNavBar>
             <ListItemNavBar component="a" href="#">
                 <ListItemIconNavBar>
                     <WebOutlinedIcon />
                 </ListItemIconNavBar>
-                <ListItemTextNavBar primary="My Website" />
+                <ListItemTextNavBar primary="Mi sitio web" />
             </ListItemNavBar>
         </ListNavBar>
     );
