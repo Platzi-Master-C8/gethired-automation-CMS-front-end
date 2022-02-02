@@ -85,7 +85,7 @@ const UserInfo = ({ user }) => {
                     ))} */}
                 </Grid>
                 <Grid item xs={8} container direction="column">
-                    <Typography variant="h5">About me</Typography>
+                    <Typography variant="h5">Acerca de mí</Typography>
                     <Typography
                         paragraph
                         variant="body2"

@@ -219,7 +219,7 @@ const UserEditForm = () => {
                     <Typography sx={{ color: '#000', fontWeight: 600, fontSize: 16 }}>Género</Typography>
                     <RadioGroup aria-label="gender" value={gender} onChange={handleGender} name="use-radio-group">
                         <FormControlLabel
-                            value="Female"
+                            value="Femenino"
                             control={
                                 <RadioCustom
                                     sx={{
@@ -229,10 +229,10 @@ const UserEditForm = () => {
                                     }}
                                 />
                             }
-                            label="Female"
+                            label="Femenino"
                         />
                         <FormControlLabel
-                            value="Male"
+                            value="Masculino"
                             control={
                                 <RadioCustom
                                     sx={{
@@ -242,10 +242,10 @@ const UserEditForm = () => {
                                     }}
                                 />
                             }
-                            label="Male"
+                            label="Masculino"
                         />
                         <FormControlLabel
-                            value="No binary"
+                            value="No binario"
                             control={
                                 <RadioCustom
                                     sx={{
@@ -255,7 +255,7 @@ const UserEditForm = () => {
                                     }}
                                 />
                             }
-                            label="No binary"
+                            label="No binario"
                         />
                     </RadioGroup>
                 </GridItem>
@@ -263,7 +263,7 @@ const UserEditForm = () => {
                     <TextFieldUserEdit
                         inputRef={userEmailRef}
                         id="filled-required"
-                        label="Email"
+                        label="Correo electrónico"
                         defaultValue={user['user_email']}
                         onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_email: e.target.value } })}
                         variant="filled"
@@ -271,7 +271,7 @@ const UserEditForm = () => {
                     <TextFieldUserEdit
                         inputRef={userNameRef}
                         id="filled-required"
-                        label="Username"
+                        label="Nombre de usuario"
                         defaultValue={user['user_name']}
                         onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_name: e.target.value } })}
                         variant="filled"
