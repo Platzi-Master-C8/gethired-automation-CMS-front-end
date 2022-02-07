@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, TextField, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 import { useUser, useDispatch } from '../../store/UserProvider';
 import { TYPES } from '../../store/types';
 
-const TextFieldUserEdit = styled(TextField)`
-    margin: 10px 15px;
-    width: 320px;
+// const TextFieldUserEdit = styled(TextField)`
+//     margin: 10px 15px;
+//     width: 320px;
 
-    .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root,
-    .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-        color: #ae4eff;
-    }
-    .css-10botns-MuiInputBase-input-MuiFilledInput-input {
-        font-weight: 500;
-        font-size: 18px;
-    }
-    .css-cio0x1-muiinputbase-root-muifilledinput-root:after,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:hover:not(.Mui-disabled):before,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:after,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:before {
-        border-bottom: 2px solid #ae4eff;
-    }
-`;
+//     .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root,
+//     .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+//         color: #ae4eff;
+//     }
+//     .css-10botns-MuiInputBase-input-MuiFilledInput-input {
+//         font-weight: 500;
+//         font-size: 18px;
+//     }
+//     .css-cio0x1-muiinputbase-root-muifilledinput-root:after,
+//     .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:hover:not(.Mui-disabled):before,
+//     .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:after,
+//     .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:before {
+//         border-bottom: 2px solid #ae4eff;
+//     }
+// `;
 
 const TextArea = styled(TextField)`
     width: 85%;
@@ -35,6 +36,23 @@ const TextArea = styled(TextField)`
         border-bottom: 2px solid #ae4eff;
     }
 `;
+
+const FormBox = styled(Box)(() => ({
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 2,
+    paddingRight: 10,
+}));
+
+const containerFormStyle = (theme) => ({
+    '& .MuiTextField-root': { m: 1, width: '25ch' },
+    [theme.breakpoints.down('sm')]: {
+        '& .MuiTextField-root': { m: 1, width: '40ch' },
+    },
+});
 
 const UserEditInfo = () => {
     const { user } = useUser();
@@ -50,29 +68,34 @@ const UserEditInfo = () => {
     }, [description, dispatch]);
 
     return (
-        <Grid container sx={{ width: '85%', margin: 'auto' }}>
-            <Grid item sm={4}>
-                <Typography sx={{ fontSize: 20, fontWeight: 500, margin: '10px 5px' }}>Tus Redes:</Typography>
-                <TextFieldUserEdit
-                    id="filled-required"
-                    label="El link a tu perfil de LinkedIn:"
-                    defaultValue="https://www.linkedin.com/in/username"
-                    variant="filled"
-                />
-                <TextFieldUserEdit
-                    id="filled-required"
-                    label="El link a tu perfil de GitHub:"
-                    defaultValue="https://github.com/username"
-                    variant="filled"
-                />
-                <TextFieldUserEdit
-                    id="filled-required"
-                    label="El link a tu perfil de Twitter:"
-                    defaultValue="https://www.twitter.com/username"
-                    variant="filled"
-                />
+        <Grid container spacing={2}>
+            <Grid item xs={12} sm={12} md={4}>
+                <Box component="form" sx={containerFormStyle}>
+                    <FormBox>
+                        <Typography sx={{ fontSize: 20, fontWeight: 500, margin: '10px 5px' }}>Tus Redes:</Typography>
+                        <TextField
+                            id="filled-required"
+                            label="El link a tu perfil de LinkedIn:"
+                            defaultValue="https://www.linkedin.com/in/username"
+                            variant="filled"
+                        />
+                        <TextField
+                            id="filled-required"
+                            label="El link a tu perfil de GitHub:"
+                            defaultValue="https://github.com/username"
+                            variant="filled"
+                        />
+                        <TextField
+                            id="filled-required"
+                            label="El link a tu perfil de Twitter:"
+                            defaultValue="https://www.twitter.com/username"
+                            variant="filled"
+                        />
+                    </FormBox>
+                </Box>
             </Grid>
-            <Grid item sm={8}>
+
+            <Grid item xs={12} sm={12} md={8}>
                 <Typography sx={{ fontSize: 20, fontWeight: 500, margin: '10px 0px' }}>
                     Un resumen para que todo el mundo te conozca:
                 </Typography>
