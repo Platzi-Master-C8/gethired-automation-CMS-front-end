@@ -5,26 +5,6 @@ import Box from '@mui/material/Box';
 import { useUser, useDispatch } from '../../store/UserProvider';
 import { TYPES } from '../../store/types';
 
-// const TextFieldUserEdit = styled(TextField)`
-//     margin: 10px 15px;
-//     width: 320px;
-
-//     .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root,
-//     .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-//         color: #ae4eff;
-//     }
-//     .css-10botns-MuiInputBase-input-MuiFilledInput-input {
-//         font-weight: 500;
-//         font-size: 18px;
-//     }
-//     .css-cio0x1-muiinputbase-root-muifilledinput-root:after,
-//     .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:hover:not(.Mui-disabled):before,
-//     .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:after,
-//     .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:before {
-//         border-bottom: 2px solid #ae4eff;
-//     }
-// `;
-
 const TextArea = styled(TextField)`
     width: 85%;
     .css-5xn5lu-MuiInputBase-root-MuiInput-root {
