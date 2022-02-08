@@ -105,6 +105,7 @@ const UserEditForm = () => {
             <Typography align="center" gutterBotto sx={{ margin: '10px 0' }} variant="h5" component="h1">
                 Tu informacion Personal
             </Typography>
+
             <FormBox>
                 <TextField
                     inputRef={userFirstNameRef}
@@ -186,14 +187,20 @@ const UserEditForm = () => {
                         id="filled-required"
                         label="Email"
                         defaultValue={user.user_email}
+
+            
+
                         onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_email: e.target.value } })}
                         variant="filled"
                     />
                     <TextField
                         inputRef={userNameRef}
                         id="filled-required"
+
                         label="Username"
-                        defaultValue={user.user_name}
+                        
+                        
+                        defaultValue={user['user_name']}
                         onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_name: e.target.value } })}
                         variant="filled"
                     />

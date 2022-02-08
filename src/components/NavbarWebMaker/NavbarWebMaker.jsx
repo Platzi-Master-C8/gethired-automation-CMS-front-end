@@ -67,8 +67,9 @@ const NavbarWebMaker = () => {
                     <ListItemText
                         sx={{
                             color: '#373f41',
+                            minWidth: '90px',
                         }}
-                        primary="Preview"
+                        primary="Vista Previa"
                     />
                 </ListItemButton>
             </ListItem>

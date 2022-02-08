@@ -71,27 +71,27 @@ const MenuMobile = () => {
             >
                 <MenuItem>
                     <EmailOutlinedIcon sx={{ marginRight: '10px' }} />
-                    <Typography>Messages</Typography>
+                    <Typography>Mensajes</Typography>
                 </MenuItem>
                 <MenuItem>
                     <NotificationsNoneOutlinedIcon sx={{ marginRight: '10px' }} />
-                    <Typography>Notifications</Typography>
+                    <Typography>Notificaciones</Typography>
                 </MenuItem>
                 <MenuItem>
                     <GroupsOutlinedIcon sx={{ marginRight: '10px' }} />
-                    <Typography>Forum</Typography>
+                    <Typography>Foros</Typography>
                 </MenuItem>
                 <MenuItem>
                     <BusinessCenterOutlinedIcon sx={{ marginRight: '10px' }} />
-                    <Typography>Jobs</Typography>
+                    <Typography>Empleos</Typography>
                 </MenuItem>
                 <MenuItem>
                     <ArticleOutlinedIcon sx={{ marginRight: '10px' }} />
-                    <Typography>Blogpost</Typography>
+                    <Typography>Blog</Typography>
                 </MenuItem>
                 <MenuItem>
                     <WebOutlinedIcon sx={{ marginRight: '10px' }} />
-                    <Typography>My Website</Typography>
+                    <Typography>Mi sitio web</Typography>
                 </MenuItem>
             </Menu>
         </React.Fragment>
