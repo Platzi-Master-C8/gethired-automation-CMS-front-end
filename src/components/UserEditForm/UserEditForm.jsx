@@ -4,10 +4,10 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
-import Grid from '@mui/material/Grid';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Box from '@mui/material/Box';
 import { useUser, useDispatch } from '../../store/UserProvider';
 import { TYPES } from '../../store/types';
 
@@ -29,68 +29,34 @@ const experiencia = [
     },
 ];
 
-const TextFieldUserEdit = styled(TextField)`
-    margin: 10px 15px;
-    width: 320px;
+const FormBox = styled(Box)(() => ({
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 2,
+}));
 
-    .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root,
-    .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-        color: #ae4eff;
-    }
-    .css-10botns-MuiInputBase-input-MuiFilledInput-input {
-        font-weight: 500;
-        font-size: 18px;
-    }
-    .css-cio0x1-muiinputbase-root-muifilledinput-root:after,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:hover:not(.Mui-disabled):before,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:after,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:before {
-        border-bottom: 2px solid #ae4eff;
-    }
-`;
+const genderOptions = [
+    {
+        id: 1,
+        value: 'Female',
+    },
+    {
+        id: 2,
+        value: 'Male',
+    },
+    {
+        id: 3,
+        value: 'No binary',
+    },
+];
 
-const TextFieldUserEditNumber = styled(TextField)`
-    margin: 10px 15px;
-    width: 195px;
-
-    .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root,
-    .css-au3a9q-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-        color: #ae4eff;
-    }
-    .css-10botns-MuiInputBase-input-MuiFilledInput-input {
-        font-weight: 500;
-        font-size: 18px;
-    }
-    .css-cio0x1-muiinputbase-root-muifilledinput-root:after,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:hover:not(.Mui-disabled):before,
-    .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:after {
-        border-bottom: 2px solid #ae4eff;
-    }
-    @media (max-width: 400px) {
-        width: 250px;
-        margin-left: 15px;
-    }
-`;
-
-const RadioCustom = styled(Radio)`
-    color: #ae4eff;
-    .Mui-checked {
-        color: #ae4eff;
-    }
-`;
-
-const GridContainer = styled(Grid)`
-    width: 85%;
-    padding: 0px 20px;
-    @media (max-width: 800px) {
-        width: 100%;
-    }
-`;
-
-const GridItem = styled(Grid)`
-    padding: 0px 20px;
-    padding-left: 30px !important;
-`;
+const containerFormStyle = (theme) => ({
+    '& .MuiTextField-root': { m: 1, width: '25ch' },
+    [theme.breakpoints.down('sm')]: {
+        '& .MuiTextField-root': { m: 1, width: '40ch' },
+    },
+});
 
 const UserEditForm = () => {
     const { user } = useUser();
@@ -135,150 +101,149 @@ const UserEditForm = () => {
     }, [dispatch, gender, user]);
 
     return (
-        <div>
-            <Typography sx={{ color: '#000', fontSize: '21px', padding: '20px 10px', fontWeight: '600' }}>
-                Tu información personal:
+        <Box component="form" sx={containerFormStyle}>
+            <Typography align="center" gutterBotto sx={{ margin: '10px 0' }} variant="h5" component="h1">
+                Tu informacion Personal
             </Typography>
-            <GridContainer container spacing={1}>
-                <Grid item sm={6} xs={12}>
-                    <TextFieldUserEdit
-                        inputRef={userFirstNameRef}
-                        id="filled-required"
-                        label="Nombre(s)"
-                        defaultValue={user['user_first_name']}
-                        onChange={(e) =>
-                            dispatch({ type: TYPES.UPDATE_USER, payload: { user_first_name: e.target.value } })
-                        }
-                        variant="filled"
-                    />
-                </Grid>
-                <Grid item sm={6} xs={12}>
-                    <TextFieldUserEdit
-                        inputRef={userLastNameRef}
-                        id="filled-required"
-                        label="Apellidos"
-                        defaultValue={user['user_last_name']}
-                        onChange={(e) =>
-                            dispatch({ type: TYPES.UPDATE_USER, payload: { user_last_name: e.target.value } })
-                        }
-                        variant="filled"
-                    />
-                </Grid>
-                <Grid item sm={6} xs={12}>
-                    <TextFieldUserEdit
-                        inputRef={userProfessionRef}
-                        id="filled-required"
-                        label="Titulo/Profesión"
-                        defaultValue={user['user_profession']}
-                        onChange={(e) =>
-                            dispatch({ type: TYPES.UPDATE_USER, payload: { user_profession: e.target.value } })
-                        }
-                        variant="filled"
-                    />
-                </Grid>
-                <Grid item sm={6} xs={12}>
-                    <TextFieldUserEdit
-                        inputRef={userKnowledgeLevel}
-                        id="filled-select-currency"
-                        select
-                        label="Nivel de Conocimiento"
-                        value={experienciaUser}
-                        onChange={handleChangeExperienciaUser}
-                        variant="filled"
-                    >
-                        {experiencia.map((option) => (
-                            <MenuItem key={option.id} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextFieldUserEdit>
-                </Grid>
-                <Grid item sm={6} xs={12}>
-                    <TextFieldUserEdit
-                        id="date"
-                        label="Fecha de Nacimiento"
-                        type="date"
-                        defaultValue="2017-05-24"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        variant="filled"
-                    />
-                </Grid>
-                <Grid item sm={4} xs={12}>
-                    <TextFieldUserEditNumber
-                        inputRef={userPhoneRef}
-                        id="filled-select-currency"
-                        label="Número"
-                        defaultValue={user['user_phone']}
-                        onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_phone: e.target.value } })}
-                        variant="filled"
-                    />
-                </Grid>
-                <GridItem item sm={6} xs={12}>
-                    <Typography sx={{ color: '#000', fontWeight: 600, fontSize: 16 }}>Género</Typography>
-                    <RadioGroup aria-label="gender" value={gender} onChange={handleGender} name="use-radio-group">
-                        <FormControlLabel
-                            value="Femenino"
-                            control={
-                                <RadioCustom
-                                    sx={{
-                                        '&.Mui-checked': {
-                                            color: '#ae4eff',
-                                        },
-                                    }}
-                                />
-                            }
-                            label="Femenino"
-                        />
-                        <FormControlLabel
-                            value="Masculino"
-                            control={
-                                <RadioCustom
-                                    sx={{
-                                        '&.Mui-checked': {
-                                            color: '#ae4eff',
-                                        },
-                                    }}
-                                />
-                            }
-                            label="Masculino"
-                        />
-                        <FormControlLabel
-                            value="No binario"
-                            control={
-                                <RadioCustom
-                                    sx={{
-                                        '&.Mui-checked': {
-                                            color: '#ae4eff',
-                                        },
-                                    }}
-                                />
-                            }
-                            label="No binario"
-                        />
-                    </RadioGroup>
-                </GridItem>
-                <Grid item xs={6}>
-                    <TextFieldUserEdit
+
+            <FormBox>
+                <TextField
+                    inputRef={userFirstNameRef}
+                    id="filled-required"
+                    label="Nombre(s)"
+                    defaultValue={user.user_first_name}
+                    onChange={(e) =>
+                        dispatch({ type: TYPES.UPDATE_USER, payload: { user_first_name: e.target.value } })
+                    }
+                    variant="filled"
+                />
+                <TextField
+                    inputRef={userLastNameRef}
+                    id="filled-required"
+                    label="Apellidos"
+                    defaultValue={user.user_last_name}
+                    onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_last_name: e.target.value } })}
+                    variant="filled"
+                />
+            </FormBox>
+            <FormBox>
+                <TextField
+                    inputRef={userProfessionRef}
+                    id="filled-required"
+                    label="Titulo/Profesión"
+                    defaultValue={user.user_profession}
+                    onChange={(e) =>
+                        dispatch({ type: TYPES.UPDATE_USER, payload: { user_profession: e.target.value } })
+                    }
+                    variant="filled"
+                />
+                <TextField
+                    inputRef={userKnowledgeLevel}
+                    id="filled-select-currency"
+                    select
+                    label="Nivel de Conocimiento"
+                    value={experienciaUser}
+                    onChange={handleChangeExperienciaUser}
+                    variant="filled"
+                >
+                    {experiencia.map((option) => (
+                        <MenuItem key={option.id} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
+            </FormBox>
+            <FormBox>
+                <TextField
+                    id="date"
+                    label="Fecha de Nacimiento"
+                    type="date"
+                    defaultValue="2017-05-24"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    variant="filled"
+                />
+                <TextField
+                    inputRef={userPhoneRef}
+                    id="filled-select-currency"
+                    label="Número"
+                    defaultValue={user.user_phone}
+                    onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_phone: e.target.value } })}
+                    variant="filled"
+                />
+            </FormBox>
+            <FormBox>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        flexWrap: 'wrap',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <TextField
                         inputRef={userEmailRef}
                         id="filled-required"
-                        label="Correo electrónico"
-                        defaultValue={user['user_email']}
+                        label="Email"
+                        defaultValue={user.user_email}
+
+            
+
                         onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_email: e.target.value } })}
                         variant="filled"
                     />
-                    <TextFieldUserEdit
+                    <TextField
                         inputRef={userNameRef}
                         id="filled-required"
-                        label="Nombre de usuario"
+
+                        label="Username"
+                        
+                        
                         defaultValue={user['user_name']}
                         onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_name: e.target.value } })}
                         variant="filled"
                     />
-                </Grid>
-            </GridContainer>
-        </div>
+                </Box>
+                <Box
+                    sx={{
+                        minWidth: '220px',
+                        paddingLeft: '10px',
+                        paddingRight: '10px',
+                        marginLeft: '12px',
+                        marginRight: '12px',
+                    }}
+                >
+                    <Typography
+                        sx={{
+                            color: '#000',
+                            fontWeight: 600,
+                            fontSize: 16,
+                        }}
+                    >
+                        Género
+                    </Typography>
+                    <RadioGroup aria-label="gender" value={gender} onChange={handleGender} name="use-radio-group">
+                        {genderOptions.map((gend) => (
+                            <FormControlLabel
+                                key={gend.id}
+                                value={gend.value}
+                                control={
+                                    <Radio
+                                        sx={{
+                                            '&.Mui-checked': {
+                                                color: '#ae4eff',
+                                            },
+                                        }}
+                                    />
+                                }
+                                label={gender.value}
+                            />
+                        ))}
+                    </RadioGroup>
+                </Box>
+            </FormBox>
+        </Box>
     );
 };
 
