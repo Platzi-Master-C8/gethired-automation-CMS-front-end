@@ -102,16 +102,15 @@ const UserEditForm = () => {
 
     return (
         <Box component="form" sx={containerFormStyle}>
-            <Typography align="center" gutterBotto sx={{ margin: '10px 0' }} variant="h5" component="h1">
+            <Typography align="center" sx={{ margin: '10px 0' }} variant="h5" component="h1">
                 Tu informacion Personal
             </Typography>
-
             <FormBox>
                 <TextField
                     inputRef={userFirstNameRef}
                     id="filled-required"
                     label="Nombre(s)"
-                    defaultValue={user.user_first_name}
+                    defaultValue={user['user_first_name']}
                     onChange={(e) =>
                         dispatch({ type: TYPES.UPDATE_USER, payload: { user_first_name: e.target.value } })
                     }
@@ -121,7 +120,7 @@ const UserEditForm = () => {
                     inputRef={userLastNameRef}
                     id="filled-required"
                     label="Apellidos"
-                    defaultValue={user.user_last_name}
+                    defaultValue={user['user_last_name']}
                     onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_last_name: e.target.value } })}
                     variant="filled"
                 />
@@ -131,7 +130,7 @@ const UserEditForm = () => {
                     inputRef={userProfessionRef}
                     id="filled-required"
                     label="Titulo/Profesión"
-                    defaultValue={user.user_profession}
+                    defaultValue={user['user_profession']}
                     onChange={(e) =>
                         dispatch({ type: TYPES.UPDATE_USER, payload: { user_profession: e.target.value } })
                     }
@@ -146,7 +145,7 @@ const UserEditForm = () => {
                     onChange={handleChangeExperienciaUser}
                     variant="filled"
                 >
-                    {experiencia.map((option) => (
+                    {experiencia?.map((option) => (
                         <MenuItem key={option.id} value={option.value}>
                             {option.label}
                         </MenuItem>
@@ -168,7 +167,7 @@ const UserEditForm = () => {
                     inputRef={userPhoneRef}
                     id="filled-select-currency"
                     label="Número"
-                    defaultValue={user.user_phone}
+                    defaultValue={user['user_phone']}
                     onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_phone: e.target.value } })}
                     variant="filled"
                 />
@@ -186,20 +185,14 @@ const UserEditForm = () => {
                         inputRef={userEmailRef}
                         id="filled-required"
                         label="Email"
-                        defaultValue={user.user_email}
-
-            
-
+                        defaultValue={user['user_email']}
                         onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_email: e.target.value } })}
                         variant="filled"
                     />
                     <TextField
                         inputRef={userNameRef}
                         id="filled-required"
-
                         label="Username"
-                        
-                        
                         defaultValue={user['user_name']}
                         onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_name: e.target.value } })}
                         variant="filled"
@@ -224,7 +217,7 @@ const UserEditForm = () => {
                         Género
                     </Typography>
                     <RadioGroup aria-label="gender" value={gender} onChange={handleGender} name="use-radio-group">
-                        {genderOptions.map((gend) => (
+                        {genderOptions?.map((gend) => (
                             <FormControlLabel
                                 key={gend.id}
                                 value={gend.value}
@@ -237,7 +230,7 @@ const UserEditForm = () => {
                                         }}
                                     />
                                 }
-                                label={gender.value}
+                                label={gend.value}
                             />
                         ))}
                     </RadioGroup>
