@@ -29,3 +29,6 @@ Before you contribute to the project please make sure to read all items below.
 
 * [Code of Conduct](/CODE_OF_CONDUCT.md)
 * [Contributing Guide](/CONTRIBUTING.md)
+
+## Deploy
+https://get-hired-cms.netlify.app/
