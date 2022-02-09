@@ -57,12 +57,12 @@ const UserTemplates = (templatesArr) => {
         <Container fixed sx={{ mt: 2 }}>
             <Box>
                 <Typography variant="h6" sx={{ marginBottom: '20px', fontWeight: 'bold' }}>
-                    Templates:
+                    Plantillas:
                 </Typography>
                 {templatesArr.length === 0 ? (
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <Typography>Loading...</Typography>
+                            <Typography>Cargando...</Typography>
                         </Grid>
                     </Grid>
                 ) : (

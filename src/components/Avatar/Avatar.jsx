@@ -64,23 +64,23 @@ const AvatarMenu = () => {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem>
-                    <Avatar /> Profile
+                    <Avatar /> Perfil
                 </MenuItem>
                 <MenuItem>
-                    <Avatar /> My account
+                    <Avatar /> Mi cuenta
                 </MenuItem>
                 <Divider />
                 <MenuItem>
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>
-                    Settings
+                    Configuración
                 </MenuItem>
                 <MenuItem>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
-                    Logout
+                    Cerrar sesión
                 </MenuItem>
             </Menu>
         </React.Fragment>
