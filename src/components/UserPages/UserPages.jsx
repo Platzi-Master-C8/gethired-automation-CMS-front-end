@@ -1,9 +1,10 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-param-reassign */
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '@mui/material/Container';
 import Card from '../Card/Card';
 import NewPageCard from '../NewPageCard/NewPageCard';
+import UserTemplates from '../UserTemplates/UserTemplates';
 
 import './UserPages.scss';
 
@@ -51,8 +52,15 @@ const testArr = [
         description: 'This is page7 lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
     },
 ];
+
 const UserPages = (pagesArr) => {
     pagesArr = testArr;
+
+    const [show, setShow] = useState(false);
+    const onClick = () => {
+        setShow(true);
+    };
+
     return (
         <Container fixed sx={{ mt: 2 }}>
             <div className="pages-container">
@@ -64,7 +72,10 @@ const UserPages = (pagesArr) => {
                         {pagesArr.map((page) => (
                             <Card key={page.id} title={page.title} description={page.description} cover={page.img} />
                         ))}
-                        <NewPageCard />
+                        <div onClick={onClick}>
+                            <NewPageCard />
+                        </div>
+                        {show ? <UserTemplates /> : null}
                     </div>
                 )}
             </div>
