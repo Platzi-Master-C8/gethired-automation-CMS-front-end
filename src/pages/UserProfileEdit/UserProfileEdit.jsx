@@ -9,6 +9,17 @@ import UserEditAvatar from '../../components/UserEditAvatar/UserEditAvatar';
 import UserEditInfo from '../../components/UserEditInfo/UserEditInfo';
 import UserEditButtons from '../../components/UserEditButtons/UserEditButtons';
 
+const avatarAlign = (theme) => ({
+    display: 'flex',
+    alignItems: 'center',
+    [theme.breakpoints.up('md')]: {
+        justifyContent: 'flex-end',
+    },
+    [theme.breakpoints.down('md')]: {
+        justifyContent: 'center',
+    },
+});
+
 const UserProfileEdit = () => {
     return (
         <React.Fragment>
@@ -17,17 +28,7 @@ const UserProfileEdit = () => {
                 <Box sx={{ margin: '20px 0' }}>
                     <Box>
                         <Grid container spacing={2}>
-                            <Grid
-                                item
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
-                                xs={12}
-                                sm={12}
-                                md={4}
-                            >
+                            <Grid item sx={avatarAlign} xs={12} sm={12} md={4}>
                                 <UserEditAvatar />
                             </Grid>
                             <Grid item xs={12} sm={12} md={8}>
