@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/extensions
 import 'regenerator-runtime/runtime.js';
 
-const putUser = async (userId, data) => {
+const putUser = async (token, data) => {
     try {
-        const urlUser = `https://agile-tor-65287.herokuapp.com/users/${userId}/profile`;
+        const urlUser = `https://agile-tor-65287.herokuapp.com/users/update/profile`;
 
         console.log('datas: ', data);
 
@@ -11,6 +11,7 @@ const putUser = async (userId, data) => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
+                token,
             },
             body: JSON.stringify(data),
         });
