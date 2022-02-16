@@ -1,10 +1,9 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
+    mode: 'development',
     entry: './src/index.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -22,38 +21,9 @@ module.exports = {
         },
     },
     devServer: {
-        port: '3000',
         hot: true,
         watchFiles: ['./src/**'],
         historyApiFallback: true,
-    },
-
-    optimization: {
-        minimize: true,
-        runtimeChunk: true,
-        splitChunks: {
-            chunks: 'all',
-            cacheGroups: {
-                default: false,
-                reactVendor: {
-                    test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                    chunks: 'all',
-                    name: 'react-vendor',
-                    filename: 'assets/common.[chunkhash].js',
-                    reuseExistingChunk: true,
-                    enforce: true,
-                    priority: 20,
-                },
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    filename: 'assets/vendor.[chunkhash].js',
-                    reuseExistingChunk: true,
-                    enforce: true,
-                    priority: 10,
-                },
-            },
-        },
     },
     module: {
         rules: [
@@ -92,12 +62,6 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'assets/css/[name].css',
-        }),
-        new CleanWebpackPlugin(),
-        new BundleAnalyzerPlugin({
-            // generateStatsFile: true,
-            analyzerMode: 'disabled',
-            generateStatsFile: true,
-        }),
+        })
     ],
 };
