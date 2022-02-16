@@ -10,6 +10,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Box from '@mui/material/Box';
 import { useUser, useDispatch } from '../../store/UserProvider';
 import { TYPES } from '../../store/types';
+import * as validations from '../../utils/validateForm';
 
 const experiencia = [
     {
@@ -70,8 +71,8 @@ const UserEditForm = () => {
     const userEmailRef = useRef();
     const userNameRef = useRef();
     const [gender, setGender] = useState(user['user_gender']);
-
     const [experienciaUser, setExperienciaUser] = useState('without knowledge');
+    const [errorsForm, setErrorsForm] = useState({});
 
     const handleChangeExperienciaUser = (event) => {
         setExperienciaUser(event.target.value);
@@ -111,18 +112,26 @@ const UserEditForm = () => {
                     id="filled-required"
                     label="Nombre(s)"
                     defaultValue={user['user_first_name']}
-                    onChange={(e) =>
-                        dispatch({ type: TYPES.UPDATE_USER, payload: { user_first_name: e.target.value } })
-                    }
+                    onChange={(e) => {
+                        setErrorsForm({ ...errorsForm, firstName: validations.firstName(e.target.value) });
+                        return dispatch({ type: TYPES.UPDATE_USER, payload: { user_first_name: e.target.value } });
+                    }}
                     variant="filled"
+                    error={errorsForm.firstName}
+                    helperText={errorsForm.firstName ? 'Nombre invalido' : ''}
                 />
                 <TextField
                     inputRef={userLastNameRef}
                     id="filled-required"
                     label="Apellidos"
                     defaultValue={user['user_last_name']}
-                    onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_last_name: e.target.value } })}
+                    onChange={(e) => {
+                        setErrorsForm({ ...errorsForm, lastName: validations.lastName(e.target.value) });
+                        return dispatch({ type: TYPES.UPDATE_USER, payload: { user_last_name: e.target.value } });
+                    }}
                     variant="filled"
+                    error={errorsForm.lastName}
+                    helperText={errorsForm.lastName ? 'Apellido invalido' : ''}
                 />
             </FormBox>
             <FormBox>
@@ -162,14 +171,25 @@ const UserEditForm = () => {
                         shrink: true,
                     }}
                     variant="filled"
+                    onChange={(e) => {
+                        setErrorsForm({ ...errorsForm, birthDate: validations.birthDate(e.target.value) });
+                        // return dispatch({ type: TYPES.UPDATE_USER, payload: { user_birth_day: e.target.value } })
+                    }}
+                    error={errorsForm.birthDate}
+                    helperText={errorsForm.birthDate ? 'Debes tener entre 18 y 122 años' : ''}
                 />
                 <TextField
                     inputRef={userPhoneRef}
                     id="filled-select-currency"
-                    label="Número"
+                    label="Número de Teléfono"
                     defaultValue={user['user_phone']}
-                    onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_phone: e.target.value } })}
+                    onChange={(e) => {
+                        setErrorsForm({ ...errorsForm, phone: validations.phoneNumber(e.target.value) });
+                        return dispatch({ type: TYPES.UPDATE_USER, payload: { user_phone: e.target.value } });
+                    }}
                     variant="filled"
+                    error={errorsForm.phone}
+                    helperText={errorsForm.phone ? 'Número invalido' : ''}
                 />
             </FormBox>
             <FormBox>
@@ -186,24 +206,33 @@ const UserEditForm = () => {
                         id="filled-required"
                         label="Email"
                         defaultValue={user['user_email']}
-                        onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_email: e.target.value } })}
+                        onChange={(e) => {
+                            setErrorsForm({ ...errorsForm, email: validations.email(e.target.value) });
+                            return dispatch({ type: TYPES.UPDATE_USER, payload: { user_email: e.target.value } });
+                        }}
                         variant="filled"
+                        error={errorsForm.email}
+                        helperText={errorsForm.email ? 'Email invalido' : ''}
                     />
                     <TextField
                         inputRef={userNameRef}
                         id="filled-required"
                         label="Username"
                         defaultValue={user['user_name']}
-                        onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { user_name: e.target.value } })}
+                        onChange={(e) => {
+                            setErrorsForm({ ...errorsForm, username: validations.username(e.target.value) });
+                            return dispatch({ type: TYPES.UPDATE_USER, payload: { user_name: e.target.value } });
+                        }}
                         variant="filled"
+                        error={errorsForm.username}
+                        helperText={errorsForm.username ? 'Username invalido' : ''}
                     />
                 </Box>
                 <Box
                     sx={{
-                        minWidth: '220px',
-                        paddingLeft: '10px',
+                        minWidth: '244px',
+                        paddingLeft: '8px',
                         paddingRight: '10px',
-                        marginLeft: '12px',
                         marginRight: '12px',
                     }}
                 >

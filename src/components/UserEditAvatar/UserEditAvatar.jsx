@@ -31,7 +31,7 @@ const AvatarCustom = styled(Avatar)`
 
 const UserEditAvatar = () => {
     return (
-        <Stack sx={{ width: '100%' }}>
+        <Stack>
             <AvatarCustom>
                 <Typography className="userEdit__typograpfy">J</Typography>
                 <Stack className="userEdit__stack">
