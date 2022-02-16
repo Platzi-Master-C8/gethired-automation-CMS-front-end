@@ -41,3 +41,24 @@ export const username = (uname) => {
 
   return !regex.test(uname);
 }
+
+export const linkedin = (link) => {
+  // validation for linkedin
+  const regex = /^(https:\/\/)?(www\.)?linkedin\.com\/in\/[a-zA-Z0-9]{1,}$/;
+
+  return !regex.test(link);
+}
+
+export const github = (link) => {
+  // validation for github
+  const regex = /^(https:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9]{1,}$/;
+
+  return !regex.test(link);
+}
+
+export const twitter = (link) => {
+  // validation for twitter
+  const regex = /^(https:\/\/)?(www\.)?twitter\.com\/[a-zA-Z0-9]{1,}$/;
+
+  return !regex.test(link);
+}

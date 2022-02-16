@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { useUser, useDispatch } from '../../store/UserProvider';
 import { TYPES } from '../../store/types';
+import * as validations from '../../utils/validateForm';
 
 const TextArea = styled(TextField)`
     width: 85%;
@@ -41,6 +42,7 @@ const UserEditInfo = () => {
 
     // eslint-disable-next-line dot-notation
     const [description, setDescription] = useState(user['user_description']);
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         // console.log('Descripcion : ', userDescriptionRef.current);
@@ -58,18 +60,27 @@ const UserEditInfo = () => {
                             label="El link a tu perfil de LinkedIn:"
                             defaultValue="https://www.linkedin.com/in/username"
                             variant="filled"
+                            onChange={(e) => setErrors({ ...errors, linkedin: validations.linkedin(e.target.value) })}
+                            error={errors.linkedin}
+                            helperText={errors.linkedin ? 'El link de LinkedIn no es válido' : ''}
                         />
                         <TextField
                             id="filled-required"
                             label="El link a tu perfil de GitHub:"
                             defaultValue="https://github.com/username"
                             variant="filled"
+                            onChange={(e) => setErrors({ ...errors, github: validations.github(e.target.value) })}
+                            error={errors.github}
+                            helperText={errors.github ? 'El link de GitHub no es válido' : ''}
                         />
                         <TextField
                             id="filled-required"
                             label="El link a tu perfil de Twitter:"
                             defaultValue="https://www.twitter.com/username"
                             variant="filled"
+                            onChange={(e) => setErrors({ ...errors, twitter: validations.twitter(e.target.value) })}
+                            error={errors.twitter}
+                            helperText={errors.twitter ? 'El link de Twitter no es válido' : ''}
                         />
                     </FormBox>
                 </Box>
