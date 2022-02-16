@@ -84,7 +84,7 @@ const UserEditInfo = () => {
                     multiline
                     rows={8}
                     value={description}
-                    variant="standard"
+                    variant="outlined"
                     onChange={(e) => {
                         setDescription(e.target.value);
                         dispatch({ type: TYPES.UPDATE_USER, payload: { user_description: e.target.value } });
