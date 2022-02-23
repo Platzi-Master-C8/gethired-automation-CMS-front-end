@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { Typography, TextField, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -35,14 +36,13 @@ const containerFormStyle = (theme) => ({
     },
 });
 
-const UserEditInfo = () => {
+const UserEditInfo = ({ errorsForm, setErrorsForm }) => {
     const { user } = useUser();
     const dispatch = useDispatch();
     // const userDescriptionRef = useRef();
 
     // eslint-disable-next-line dot-notation
     const [description, setDescription] = useState(user['user_description']);
-    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         // console.log('Descripcion : ', userDescriptionRef.current);
@@ -60,27 +60,33 @@ const UserEditInfo = () => {
                             label="El link a tu perfil de LinkedIn:"
                             defaultValue="https://www.linkedin.com/in/username"
                             variant="filled"
-                            onChange={(e) => setErrors({ ...errors, linkedin: validations.linkedin(e.target.value) })}
-                            error={errors.linkedin}
-                            helperText={errors.linkedin ? 'El link de LinkedIn no es válido' : ''}
+                            onChange={(e) =>
+                                setErrorsForm({ ...errorsForm, linkedin: validations.linkedin(e.target.value) })
+                            }
+                            error={errorsForm.linkedin}
+                            helperText={errorsForm.linkedin ? 'El link de LinkedIn no es válido' : ''}
                         />
                         <TextField
                             id="filled-required"
                             label="El link a tu perfil de GitHub:"
                             defaultValue="https://github.com/username"
                             variant="filled"
-                            onChange={(e) => setErrors({ ...errors, github: validations.github(e.target.value) })}
-                            error={errors.github}
-                            helperText={errors.github ? 'El link de GitHub no es válido' : ''}
+                            onChange={(e) =>
+                                setErrorsForm({ ...errorsForm, github: validations.github(e.target.value) })
+                            }
+                            error={errorsForm.github}
+                            helperText={errorsForm.github ? 'El link de GitHub no es válido' : ''}
                         />
                         <TextField
                             id="filled-required"
                             label="El link a tu perfil de Twitter:"
                             defaultValue="https://www.twitter.com/username"
                             variant="filled"
-                            onChange={(e) => setErrors({ ...errors, twitter: validations.twitter(e.target.value) })}
-                            error={errors.twitter}
-                            helperText={errors.twitter ? 'El link de Twitter no es válido' : ''}
+                            onChange={(e) =>
+                                setErrorsForm({ ...errorsForm, twitter: validations.twitter(e.target.value) })
+                            }
+                            error={errorsForm.twitter}
+                            helperText={errorsForm.twitter ? 'El link de Twitter no es válido' : ''}
                         />
                     </FormBox>
                 </Box>
