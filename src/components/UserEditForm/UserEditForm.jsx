@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable dot-notation */
 import React, { useEffect, useState, useRef } from 'react';
 import Typography from '@mui/material/Typography';
@@ -59,7 +60,7 @@ const containerFormStyle = (theme) => ({
     },
 });
 
-const UserEditForm = () => {
+const UserEditForm = ({ errorsForm, setErrorsForm }) => {
     const { user } = useUser();
     const dispatch = useDispatch();
 
@@ -72,7 +73,6 @@ const UserEditForm = () => {
     const userNameRef = useRef();
     const [gender, setGender] = useState(user['user_gender']);
     const [experienciaUser, setExperienciaUser] = useState('without knowledge');
-    const [errorsForm, setErrorsForm] = useState({});
 
     const handleChangeExperienciaUser = (event) => {
         setExperienciaUser(event.target.value);
@@ -118,7 +118,7 @@ const UserEditForm = () => {
                     }}
                     variant="filled"
                     error={errorsForm.firstName}
-                    helperText={errorsForm.firstName ? 'Nombre invalido' : ''}
+                    helperText={errorsForm.firstName ? 'El nombre debe contener al menos 2 letras' : ''}
                 />
                 <TextField
                     inputRef={userLastNameRef}
@@ -131,7 +131,7 @@ const UserEditForm = () => {
                     }}
                     variant="filled"
                     error={errorsForm.lastName}
-                    helperText={errorsForm.lastName ? 'Apellido invalido' : ''}
+                    helperText={errorsForm.lastName ? 'El apellido debe contener al menos 2 letras' : ''}
                 />
             </FormBox>
             <FormBox>
@@ -225,7 +225,7 @@ const UserEditForm = () => {
                         }}
                         variant="filled"
                         error={errorsForm.username}
-                        helperText={errorsForm.username ? 'Username invalido' : ''}
+                        helperText={errorsForm.username ? 'El username debe contener al menos 6 letras' : ''}
                     />
                 </Box>
                 <Box

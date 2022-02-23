@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -21,6 +21,8 @@ const avatarAlign = (theme) => ({
 });
 
 const UserProfileEdit = () => {
+    const [errorsForm, setErrorsForm] = useState({});
+
     return (
         <React.Fragment>
             <Header />
@@ -32,7 +34,7 @@ const UserProfileEdit = () => {
                                 <UserEditAvatar />
                             </Grid>
                             <Grid item xs={12} sm={12} md={8}>
-                                <UserEditForm />
+                                <UserEditForm errorsForm={errorsForm} setErrorsForm={setErrorsForm} />
                             </Grid>
                         </Grid>
                     </Box>
@@ -43,10 +45,10 @@ const UserProfileEdit = () => {
                     />
 
                     <Box sx={{ m: 2 }}>
-                        <UserEditInfo />
+                        <UserEditInfo errorsForm={errorsForm} setErrorsForm={setErrorsForm} />
                     </Box>
                 </Box>
-                <UserEditButtons />
+                <UserEditButtons errorsForm={errorsForm} />
             </Container>
         </React.Fragment>
     );
