@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/extensions
 import 'regenerator-runtime/runtime.js';
 
-const getUser = async (token) => {
-    const urlUser = `https://agile-tor-65287.herokuapp.com/users/query/profile`;
+const getUser = async (token, userId) => {
+    const urlUser = `https://agile-tor-65287.herokuapp.com/users/query/profile/${userId}`;
     const options = {
         method: 'GET',
         headers: {

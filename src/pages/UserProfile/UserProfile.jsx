@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { UserInfo } from '../../components/UserInfo/UserInfo';
@@ -11,15 +12,17 @@ import Spinner from '../../components/spinner/Spinner';
 
 import './UserProfile.scss';
 
+import { loginService } from '../../data/loginService';
+
 const UserProfile = () => {
     const userState = useUser();
     const { isLoading, user } = userState;
     const dispatch = useDispatch();
 
-    const updateUser = () => {
-        const userToken = localStorage.getItem('token');
-
-        getUser(userToken)
+    const updateUser = (token, user_id) => {
+        // const userToken = localStorage.getItem('token');
+        console.log({ token, user_id });
+        getUser(token, user_id)
             .then((newUser) =>
                 dispatch({
                     type: TYPES.GET_USER,
@@ -31,8 +34,17 @@ const UserProfile = () => {
             });
     };
 
+    const captureTokenAndUserId = async () => {
+        const response = await loginService('vfreeman@yahoo.com', 'password');
+        const { token, payload } = response;
+        const { user_id } = payload;
+
+        updateUser(token, user_id);
+    };
+
     useEffect(() => {
-        updateUser();
+        captureTokenAndUserId();
+        // updateUser();
     }, []);
 
     return (
