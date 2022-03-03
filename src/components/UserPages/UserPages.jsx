@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
-import Container from '@mui/material/Container';
+import { Container, Typography } from '@mui/material';
 import Card from '../Card/Card';
 import NewPageCard from '../NewPageCard/NewPageCard';
 import UserTemplates from '../UserTemplates/UserTemplates';
@@ -53,7 +54,7 @@ const testArr = [
     },
 ];
 
-const UserPages = (pagesArr) => {
+const UserPages = (pagesArr, userId, urlWebMaker = 'https://romantic-jennings-85dd2e.netlify.app/') => {
     pagesArr = testArr;
 
     const [show, setShow] = useState(false);
@@ -61,22 +62,40 @@ const UserPages = (pagesArr) => {
         setShow(true);
     };
 
+    const onKeyUp = (e) => {
+        if (e.keyCode === 13 || e.keyCode === 32) {
+            setShow(true);
+        }
+    };
+
     return (
         <Container fixed sx={{ mt: 2 }}>
             <div className="pages-container">
-                <h3 className="pages-title">Paginas:</h3>
+                <Typography variant="h6" sx={{ marginBottom: '20px', fontWeight: 'bold', padding: '0 24px' }}>
+                    Paginas:
+                </Typography>
                 {pagesArr.length === 0 ? (
-                    <span>Loading</span>
+                    <span>Loading...</span>
                 ) : (
-                    <div className="card-container">
-                        {pagesArr.map((page) => (
-                            <Card key={page.id} title={page.title} description={page.description} cover={page.img} />
-                        ))}
-                        <div onClick={onClick}>
-                            <NewPageCard />
+                    <React.Fragment>
+                        <div className="card-container">
+                            {pagesArr.map((page) => (
+                                <Card
+                                    key={page.id}
+                                    type="userPage"
+                                    title={page.title}
+                                    cover={page.img}
+                                    urlWebMaker={urlWebMaker}
+                                    templateId={page.id}
+                                    userId={userId}
+                                />
+                            ))}
+                            <div onClick={onClick} onKeyUp={(e) => onKeyUp(e)}>
+                                <NewPageCard />
+                            </div>
                         </div>
-                        {show ? <UserTemplates /> : null}
-                    </div>
+                        {show ? <UserTemplates urlWebMaker={urlWebMaker} userId={userId} /> : null}
+                    </React.Fragment>
                 )}
             </div>
         </Container>

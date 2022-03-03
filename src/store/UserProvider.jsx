@@ -15,7 +15,7 @@ const initialState = {
 const UserProvider = ({ children }) => {
     return (
         <React.StrictMode>
-            <UserContext.Provider value={useReducer(userReducer, initialState)}>{children}</UserContext.Provider>;
+            <UserContext.Provider value={useReducer(userReducer, initialState)}>{children}</UserContext.Provider>
         </React.StrictMode>
     );
 };
