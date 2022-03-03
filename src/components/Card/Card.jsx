@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 
 import './Card.scss';
 
-const Card = ({ type, title, cover, urlWebMaker, templateId, userId }) => {
+const Card = ({ type, title, cover, urlWebMaker, templateId }) => {
     return (
         <div className="card__container">
             <CardUI variant="outlined" className="card" sx={{ margin: '0' }}>
@@ -18,7 +18,7 @@ const Card = ({ type, title, cover, urlWebMaker, templateId, userId }) => {
                     <div className="buttons">
                         {type === 'userPage' ? (
                             <React.Fragment>
-                                <a href={`${urlWebMaker}${templateId}${userId}`} style={{ textDecoration: 'none' }}>
+                                <a href={`${urlWebMaker}?template_id=${templateId}`} style={{ textDecoration: 'none' }}>
                                     <Button
                                         className="card-button"
                                         endIcon={<EditIcon sx={{ width: '18px', height: '18px' }} />}
@@ -58,7 +58,7 @@ const Card = ({ type, title, cover, urlWebMaker, templateId, userId }) => {
                             </React.Fragment>
                         ) : (
                             <a
-                                href={`${urlWebMaker}${templateId}${userId}`}
+                                href={`${urlWebMaker}?template_id=${templateId}`}
                                 style={{ textDecoration: 'none', alignSelf: 'center' }}
                             >
                                 <Button
