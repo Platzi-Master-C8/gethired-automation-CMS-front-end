@@ -31,7 +31,7 @@ const NewPageCard = () => {
                                 <AddCircleOutlineIcon sx={{ width: '150px', height: '150px' }} />
                             </Typography>
                             <Typography variant="h5" component="p">
-                                Nueva pagina
+                                Nueva página
                             </Typography>
                         </Box>
                     </CardContent>

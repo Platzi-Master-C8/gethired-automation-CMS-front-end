@@ -8,7 +8,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import CardTemplate from '../CardTemplate/CardTemplate';
+import Card from '../Card/Card';
 import NewTemplateCard from '../NewTemplateCard/NewTemplateCard';
 import getTemplates from '../../data/getTemplates';
 
@@ -25,7 +25,7 @@ const UserTemplatesContainer = ({ children }) => {
     );
 };
 
-const UserTemplates = () => {
+const UserTemplates = ({ userId, urlWebMaker }) => {
     const [templatesArr, setTemplatesArr] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(null);
@@ -64,11 +64,18 @@ const UserTemplates = () => {
         <UserTemplatesContainer>
             <Grid container spacing={1}>
                 <Grid item xs={12} sm={6} md={4} lg={2.4}>
-                    <NewTemplateCard />
+                    <NewTemplateCard urlWebMaker={urlWebMaker} userId={userId} />
                 </Grid>
                 {templatesArr.map((page) => (
                     <Grid key={page._id} item xs={12} sm={6} md={4} lg={2.4}>
-                        <CardTemplate title={page.template_name} cover={page.preview} />
+                        <Card
+                            type="defaultTemplate"
+                            title={page.template_name}
+                            cover={page.preview}
+                            urlWebMaker={urlWebMaker}
+                            templateId={page._id}
+                            userId={userId}
+                        />
                     </Grid>
                 ))}
             </Grid>
