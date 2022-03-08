@@ -17,7 +17,7 @@ const UserProfile = () => {
     const dispatch = useDispatch();
 
     const updateUser = () => {
-        const userToken = localStorage.getItem('token');
+        const userToken = localStorage.getItem('Token');
 
         getUser(userToken)
             .then((newUser) =>
