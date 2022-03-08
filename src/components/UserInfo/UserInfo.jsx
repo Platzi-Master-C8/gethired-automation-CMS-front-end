@@ -36,7 +36,7 @@ const ButtonStyle = styled(Button)(({ theme }) => ({
 }));
 
 const UserInfo = ({ user }) => {
-    const { user_first_name, user_last_name, user_profession, user_description } = user;
+    const { first_name, last_name, profession = 'Physics engineer', description } = user;
     const icons = {
         LinkedIn: <LinkedInIcon sx={{ mr: 1 }} />,
         GitHub: <GitHubIcon sx={{ mr: 1 }} />,
@@ -55,8 +55,8 @@ const UserInfo = ({ user }) => {
                 </Grid>
                 <Grid item xs={12} md={8} container direction="column">
                     <SectionFirstStyle>
-                        <Typography variant="h4">{`${user_first_name} ${user_last_name}`}</Typography>
-                        <Typography variant="h7">{`${user_profession}`}</Typography>
+                        <Typography variant="h4">{`${first_name} ${last_name}`}</Typography>
+                        <Typography variant="h7">{`${profession}`}</Typography>
                         <Box
                             sx={{
                                 width: { sx: '100%' },
@@ -77,7 +77,7 @@ const UserInfo = ({ user }) => {
             <Divider sx={{ m: 2 }} />
             <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid item xs={4} container direction="column" justifyContent="center" alignItems="right">
-                    {/* {user_socia_networks?.map((red, index) => (
+                    {/* {socia_networks?.map((red, index) => (
                         // eslint-disable-next-line react/no-array-index-key
                         <Link key={index} sx={{ m: 1, pl: 2, display: 'flex' }} href={red[1]}>
                             {icons[red[0]]} {red[0]}
@@ -86,12 +86,7 @@ const UserInfo = ({ user }) => {
                 </Grid>
                 <Grid item xs={8} container direction="column">
                     <Typography variant="h5">Acerca de mí</Typography>
-                    <Typography
-                        paragraph
-                        variant="body2"
-                        align="justify"
-                        sx={{ pr: 2 }}
-                    >{`${user_description}`}</Typography>
+                    <Typography paragraph variant="body2" align="justify" sx={{ pr: 2 }}>{`${description}`}</Typography>
                 </Grid>
             </Grid>
             <Divider sx={{ m: 2 }} />

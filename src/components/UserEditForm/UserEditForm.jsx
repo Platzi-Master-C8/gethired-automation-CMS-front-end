@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 /* eslint-disable dot-notation */
 import React, { useEffect, useState, useRef } from 'react';
@@ -71,7 +72,7 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
     const userKnowledgeLevel = useRef();
     const userEmailRef = useRef();
     const userNameRef = useRef();
-    const [gender, setGender] = useState(user['user_gender']);
+    const [user_gender, setGender] = useState(user['gender']);
     const [experienciaUser, setExperienciaUser] = useState('without knowledge');
 
     const handleChangeExperienciaUser = (event) => {
@@ -81,7 +82,7 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
 
     const handleGender = (event) => {
         setGender(event.target.value);
-        dispatch({ type: TYPES.UPDATE_USER, payload: { user_gender: event.target.value } });
+        dispatch({ type: TYPES.UPDATE_USER, payload: { gender: event.target.value } });
     };
 
     useEffect(() => {
@@ -89,17 +90,17 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
             type: TYPES.UPDATE_USER,
             payload: {
                 user_id: user['user_id'],
-                user_first_name: userFirstNameRef.current.defaultValue,
-                user_last_name: userLastNameRef.current.defaultValue,
-                user_profession: userProfessionRef.current.defaultValue,
-                user_phone: userPhoneRef.current.defaultValue,
-                user_knowledge_level: userKnowledgeLevel.current.value,
-                user_email: userEmailRef.current.value,
-                user_name: userNameRef.current.value,
-                user_gender: gender,
+                first_name: userFirstNameRef.current.defaultValue,
+                last_name: userLastNameRef.current.defaultValue,
+                profession: userProfessionRef.current.defaultValue,
+                phone_number: userPhoneRef.current.defaultValue,
+                knowledge_level: userKnowledgeLevel.current.value,
+                email: userEmailRef.current.value,
+                name: userNameRef.current.value,
+                gender: user_gender,
             },
         });
-    }, [dispatch, gender, user]);
+    }, [dispatch, user_gender, user]);
 
     return (
         <Box component="form" sx={containerFormStyle}>
@@ -111,10 +112,10 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
                     inputRef={userFirstNameRef}
                     id="filled-required"
                     label="Nombre(s)"
-                    defaultValue={user['user_first_name']}
+                    defaultValue={user['first_name']}
                     onChange={(e) => {
                         setErrorsForm({ ...errorsForm, firstName: validations.firstName(e.target.value) });
-                        return dispatch({ type: TYPES.UPDATE_USER, payload: { user_first_name: e.target.value } });
+                        return dispatch({ type: TYPES.UPDATE_USER, payload: { first_name: e.target.value } });
                     }}
                     variant="filled"
                     error={errorsForm.firstName}
@@ -124,10 +125,10 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
                     inputRef={userLastNameRef}
                     id="filled-required"
                     label="Apellidos"
-                    defaultValue={user['user_last_name']}
+                    defaultValue={user['last_name']}
                     onChange={(e) => {
                         setErrorsForm({ ...errorsForm, lastName: validations.lastName(e.target.value) });
-                        return dispatch({ type: TYPES.UPDATE_USER, payload: { user_last_name: e.target.value } });
+                        return dispatch({ type: TYPES.UPDATE_USER, payload: { last_name: e.target.value } });
                     }}
                     variant="filled"
                     error={errorsForm.lastName}
@@ -139,10 +140,9 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
                     inputRef={userProfessionRef}
                     id="filled-required"
                     label="Titulo/Profesión"
-                    defaultValue={user['user_profession']}
-                    onChange={(e) =>
-                        dispatch({ type: TYPES.UPDATE_USER, payload: { user_profession: e.target.value } })
-                    }
+                    // defaultValue={user['profession']}
+                    defaultValue="Physics engineer"
+                    onChange={(e) => dispatch({ type: TYPES.UPDATE_USER, payload: { profession: e.target.value } })}
                     variant="filled"
                 />
                 <TextField
@@ -173,7 +173,7 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
                     variant="filled"
                     onChange={(e) => {
                         setErrorsForm({ ...errorsForm, birthDate: validations.birthDate(e.target.value) });
-                        // return dispatch({ type: TYPES.UPDATE_USER, payload: { user_birth_day: e.target.value } })
+                        // return dispatch({ type: TYPES.UPDATE_USER, payload: { birth_day: e.target.value } })
                     }}
                     error={errorsForm.birthDate}
                     helperText={errorsForm.birthDate ? 'Debes tener entre 18 y 122 años' : ''}
@@ -182,10 +182,10 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
                     inputRef={userPhoneRef}
                     id="filled-select-currency"
                     label="Número de Teléfono"
-                    defaultValue={user['user_phone']}
+                    defaultValue={user['phone_number']}
                     onChange={(e) => {
                         setErrorsForm({ ...errorsForm, phone: validations.phoneNumber(e.target.value) });
-                        return dispatch({ type: TYPES.UPDATE_USER, payload: { user_phone: e.target.value } });
+                        return dispatch({ type: TYPES.UPDATE_USER, payload: { phone_number: e.target.value } });
                     }}
                     variant="filled"
                     error={errorsForm.phone}
@@ -205,10 +205,11 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
                         inputRef={userEmailRef}
                         id="filled-required"
                         label="Email"
-                        defaultValue={user['user_email']}
+                        // defaultValue={user['email']}
+                        defaultValue="contact@christinamoore.com"
                         onChange={(e) => {
                             setErrorsForm({ ...errorsForm, email: validations.email(e.target.value) });
-                            return dispatch({ type: TYPES.UPDATE_USER, payload: { user_email: e.target.value } });
+                            return dispatch({ type: TYPES.UPDATE_USER, payload: { email: e.target.value } });
                         }}
                         variant="filled"
                         error={errorsForm.email}
@@ -220,10 +221,11 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
                         inputRef={userNameRef}
                         id="filled-required"
                         label="Username"
-                        defaultValue={user['user_name']}
+                        // defaultValue={user['name']}
+                        defaultValue="christimoore"
                         onChange={(e) => {
                             setErrorsForm({ ...errorsForm, username: validations.username(e.target.value) });
-                            return dispatch({ type: TYPES.UPDATE_USER, payload: { user_name: e.target.value } });
+                            return dispatch({ type: TYPES.UPDATE_USER, payload: { name: e.target.value } });
                         }}
                         variant="filled"
                         error={errorsForm.username}
@@ -247,7 +249,7 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
                     >
                         Género
                     </Typography>
-                    <RadioGroup aria-label="gender" value={gender} onChange={handleGender} name="use-radio-group">
+                    <RadioGroup aria-label="gender" value={user_gender} onChange={handleGender} name="use-radio-group">
                         {genderOptions?.map((gend) => (
                             <FormControlLabel
                                 key={gend.id}

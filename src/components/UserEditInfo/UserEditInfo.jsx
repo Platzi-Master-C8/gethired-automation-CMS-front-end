@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { Typography, TextField, Grid } from '@mui/material';
@@ -42,12 +43,12 @@ const UserEditInfo = ({ errorsForm, setErrorsForm }) => {
     // const userDescriptionRef = useRef();
 
     // eslint-disable-next-line dot-notation
-    const [description, setDescription] = useState(user['user_description']);
+    const [user_description, setDescription] = useState(user['description']);
 
     useEffect(() => {
         // console.log('Descripcion : ', userDescriptionRef.current);
-        dispatch({ type: TYPES.UPDATE_USER, payload: { user_description: description } });
-    }, [description, dispatch]);
+        dispatch({ type: TYPES.UPDATE_USER, payload: { description: user_description } });
+    }, [user_description, dispatch]);
 
     return (
         <Grid container spacing={2}>
@@ -58,7 +59,8 @@ const UserEditInfo = ({ errorsForm, setErrorsForm }) => {
                         <TextField
                             id="filled-required"
                             label="El link a tu perfil de LinkedIn:"
-                            defaultValue="https://www.linkedin.com/in/username"
+                            // defaultValue="https://www.linkedin.com/in/username"
+                            defaultValue="https://www.linkedin.com/in/christimoore"
                             variant="filled"
                             onChange={(e) =>
                                 setErrorsForm({ ...errorsForm, linkedin: validations.linkedin(e.target.value) })
@@ -69,7 +71,8 @@ const UserEditInfo = ({ errorsForm, setErrorsForm }) => {
                         <TextField
                             id="filled-required"
                             label="El link a tu perfil de GitHub:"
-                            defaultValue="https://github.com/username"
+                            // defaultValue="https://github.com/username"
+                            defaultValue="https://github.com/christimoore"
                             variant="filled"
                             onChange={(e) =>
                                 setErrorsForm({ ...errorsForm, github: validations.github(e.target.value) })
@@ -80,7 +83,8 @@ const UserEditInfo = ({ errorsForm, setErrorsForm }) => {
                         <TextField
                             id="filled-required"
                             label="El link a tu perfil de Twitter:"
-                            defaultValue="https://www.twitter.com/username"
+                            // defaultValue="https://www.twitter.com/username"
+                            defaultValue="https://www.twitter.com/christimoore"
                             variant="filled"
                             onChange={(e) =>
                                 setErrorsForm({ ...errorsForm, twitter: validations.twitter(e.target.value) })
@@ -100,11 +104,11 @@ const UserEditInfo = ({ errorsForm, setErrorsForm }) => {
                     id="standard-multiline-static"
                     multiline
                     rows={8}
-                    value={description}
+                    value={user_description}
                     variant="outlined"
                     onChange={(e) => {
                         setDescription(e.target.value);
-                        dispatch({ type: TYPES.UPDATE_USER, payload: { user_description: e.target.value } });
+                        dispatch({ type: TYPES.UPDATE_USER, payload: { description: e.target.value } });
                     }}
                 />
             </Grid>
