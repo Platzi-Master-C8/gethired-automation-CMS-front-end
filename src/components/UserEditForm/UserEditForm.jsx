@@ -206,7 +206,7 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
                         id="filled-required"
                         label="Email"
                         // defaultValue={user['email']}
-                        defaultValue="contact@christinamoore.com"
+                        defaultValue="alavarack0@sitemeter.com"
                         onChange={(e) => {
                             setErrorsForm({ ...errorsForm, email: validations.email(e.target.value) });
                             return dispatch({ type: TYPES.UPDATE_USER, payload: { email: e.target.value } });
