@@ -212,7 +212,9 @@ const UserEditForm = ({ errorsForm, setErrorsForm }) => {
                         }}
                         variant="filled"
                         error={errorsForm.email}
-                        helperText={errorsForm.email ? 'Email invalido' : ''}
+                        helperText={
+                            errorsForm.email ? 'Email invalido, debe tener el siguiente formato name@example.com' : ''
+                        }
                     />
                     <TextField
                         inputRef={userNameRef}

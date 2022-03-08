@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const getTemplates = async () => {
-    const urlTemplates = `https://get-hired-api.herokuapp.com/templates/`;
+    const urlTemplates = `https://agile-tor-65287.herokuapp.com/templates/`;
     const options = {
         method: 'GET',
         headers: {
