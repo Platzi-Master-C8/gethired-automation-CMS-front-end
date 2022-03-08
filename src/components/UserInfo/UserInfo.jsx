@@ -8,7 +8,7 @@ import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-// import Link from '@mui/material/Link';
+import { Link as LinkMui } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -34,6 +34,12 @@ const ButtonStyle = styled(Button)(({ theme }) => ({
         [theme.size]: 'medium',
     },
 }));
+
+const socia_networks = [
+    ['LinkedIn', 'linkedin.com/in/christimoore'],
+    ['GitHub', 'github.com/christimoore'],
+    ['Twitter', 'twitter.com/christimoore'],
+];
 
 const UserInfo = ({ user }) => {
     const { first_name, last_name, profession = 'Physics engineer', description } = user;
@@ -77,12 +83,12 @@ const UserInfo = ({ user }) => {
             <Divider sx={{ m: 2 }} />
             <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid item xs={4} container direction="column" justifyContent="center" alignItems="right">
-                    {/* {socia_networks?.map((red, index) => (
+                    {socia_networks?.map((red, index) => (
                         // eslint-disable-next-line react/no-array-index-key
-                        <Link key={index} sx={{ m: 1, pl: 2, display: 'flex' }} href={red[1]}>
-                            {icons[red[0]]} {red[0]}
-                        </Link>
-                    ))} */}
+                        <LinkMui key={index} sx={{ m: 1, pl: 2, display: 'flex' }} href={red[1]}>
+                            {icons[red[0]]} {red[1]}
+                        </LinkMui>
+                    ))}
                 </Grid>
                 <Grid item xs={8} container direction="column">
                     <Typography variant="h5">Acerca de mí</Typography>
